@@ -15,21 +15,21 @@ export function HomePage({ onNavigate }: HomePageProps) {
       title: 'Home-Based Learning',
       description: 'Personalised educational programmes delivered in the comfort and safety of your home.',
       color: 'bg-primary/10 text-primary',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0689-high-w6ypkh.jpg',
+      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_5099-standard.jpg?enable-io=true&amp;enable=upscale&amp;crop=1351%2C1351%2Cx84%2Cy0%2Csafe&amp;width=1020&amp;height=1020',
     },
     {
       icon: BookOpen,
       title: 'In-School Support',
       description: 'Professional coaching and mentoring within school settings to prevent exclusion.',
       color: 'bg-accent/20 text-accent-foreground',
-      imageSrc: 'https://media.istockphoto.com/id/1008599774/photo/cute-labrador-dog-looking-at-laptop-on-wooden-table-in-office.jpg?s=612x612&w=0&k=20&c=s37HZfGktR0UyKY29OIapTdEk962kiVyvTINnXL5xpU=',
+      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6245-high.jpg',
     },
     {
       icon: Users,
       title: 'Family Support Programmes',
       description: 'Holistic support involving the whole family in the educational journey.',
       color: 'bg-secondary/30 text-secondary-foreground',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0827-high.jpg',
+      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0495-standard.jpg?enable-io=true&amp;enable=upscale&amp;crop=1920%2C1920%2Cx0%2Cy320%2Csafe&amp;width=1020&amp;height=1020',
     },
   ];
 

@@ -20,7 +20,7 @@ export function ResourcesPage() {
       category: 'Activities',
       date: 'March 10, 2025',
       readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1758347536110-99b5bc7c89cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwY3JhZnRzJTIwY3JlYXRpdmUlMjBhY3Rpdml0aWVzfGVufDF8fHx8MTc1OTczNjM0NXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0356-high.jpg',
     },
     {
       title: 'Understanding School Exclusion: A Parent\'s Guide',
@@ -28,7 +28,7 @@ export function ResourcesPage() {
       category: 'Guidance',
       date: 'March 5, 2025',
       readTime: '10 min read',
-      image: 'https://images.unsplash.com/photo-1640095108893-a1486543c5e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMGxlYXJuaW5nJTIwbmF0dXJlJTIwb3V0ZG9vcnxlbnwxfHx8fDE3NTk3MzYzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6166-high.jpg',
     },
     {
       title: 'Success Story: How Oliver Returned to Mainstream Education',
@@ -52,7 +52,7 @@ export function ResourcesPage() {
       category: 'Research',
       date: 'February 15, 2025',
       readTime: '9 min read',
-      image: 'https://images.unsplash.com/photo-1602178041104-f974b84751d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHBsYXlpbmclMjBiZWFjaCUyMGV4cGxvcmF0aW9ufGVufDF8fHx8MTc1OTczNjM0NXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_5004-high.jpg',
     },
   ];
 
