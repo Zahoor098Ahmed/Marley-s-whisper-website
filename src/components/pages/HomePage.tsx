@@ -22,7 +22,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       title: 'In-School Support',
       description: 'Professional coaching and mentoring within school settings to prevent exclusion.',
       color: 'bg-accent/20 text-accent-foreground',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_7190-high.jpg',
+      imageSrc: 'https://media.istockphoto.com/id/1008599774/photo/cute-labrador-dog-looking-at-laptop-on-wooden-table-in-office.jpg?s=612x612&w=0&k=20&c=s37HZfGktR0UyKY29OIapTdEk962kiVyvTINnXL5xpU=',
     },
     {
       icon: Users,

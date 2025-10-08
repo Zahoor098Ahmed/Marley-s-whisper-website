@@ -10,32 +10,32 @@ export function GalleryPage() {
 
   const galleryImages = [
     {
-      url: 'https://images.unsplash.com/photo-1758347536110-99b5bc7c89cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwY3JhZnRzJTIwY3JlYXRpdmUlMjBhY3Rpdml0aWVzfGVufDF8fHx8MTc1OTczNjM0NXww&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/photo-marley-high-7samws.jpg?enable-io=true&enable=upscale&crop=749%2C871%2Cx0%2Cy155%2Csafe&width=749&height=871',
       caption: 'Creative Crafts & Hands-On Activities',
       description: 'Children exploring creativity through wreath making and artistic projects',
     },
     {
-      url: 'https://images.unsplash.com/photo-1602178041104-f974b84751d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHBsYXlpbmclMjBiZWFjaCUyMGV4cGxvcmF0aW9ufGVufDF8fHx8MTc1OTczNjM0NXww&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_8068-high.jpg',
       caption: 'Beach Exploration & Nature Learning',
       description: 'Outdoor educational experiences connecting with nature',
     },
     {
-      url: 'https://images.unsplash.com/photo-1640461470346-c8b56497850a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwYm9hcmQlMjBnYW1lcyUyMGxlYXJuaW5nfGVufDF8fHx8MTc1OTczNjM0Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0311-high.jpg',
       caption: 'Educational Games & Interactive Learning',
       description: 'Board games like Scrabble making learning fun and engaging',
     },
     {
-      url: 'https://images.unsplash.com/photo-1758598737529-3b326b4c8a55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMHJlYWRpbmclMjBib29rcyUyMGVkdWNhdGlvbnxlbnwxfHx8fDE3NTk3MzYzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6150-high.jpg',
       caption: 'Reading & Literacy Development',
       description: 'Fostering a love for reading and storytelling',
     },
     {
-      url: 'https://images.unsplash.com/photo-1640095108893-a1486543c5e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMGxlYXJuaW5nJTIwbmF0dXJlJTIwb3V0ZG9vcnxlbnwxfHx8fDE3NTk3MzYzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_5351-high.jpg',
       caption: 'Outdoor Learning Adventures',
       description: 'Discovering and learning in natural environments',
     },
     {
-      url: 'https://images.unsplash.com/photo-1690100691688-f3b97fc15392?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGNoaWxkJTIwc21pbGluZyUyMG91dGRvb3J8ZW58MXx8fHwxNzU5NzM2MzQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      url: 'https://img.freepik.com/free-photo/adorable-running-nova-scotia-duck-tolling-retriever-dog_493961-848.jpg?semt=ais_hybrid&w=740&q=80',
       caption: 'Happy Learning Moments',
       description: 'The joy of learning in a supportive environment',
     },

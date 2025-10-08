@@ -83,13 +83,13 @@ export function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="rounded-2xl overflow-hidden shadow-xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/flagged/photo-1556742525-64ce8d772570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXR1cmUlMjBncmVlbiUyMGxlYXZlcyUyMGNhbG18ZW58MXx8fHwxNzU5NzM2MzQ3fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Peaceful nature scene representing calm learning environment"
-                  className="w-full h-[500px] object-cover"
-                />
-              </div>
+             <div className="rounded-2xl overflow-hidden shadow-xl bg-blue-100 flex items-center justify-center">
+  <ImageWithFallback
+    src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0279-high.jpg?enable-io=true&enable=upscale&crop=926%2C1389%2Cx216%2Cy0%2Csafe&width=310&height=465"
+    alt="Peaceful nature scene representing calm learning environment"
+    className="w-full h-[500px] bject-contain scale-100"
+  />
+</div>
             </motion.div>
 
             <motion.div
@@ -218,7 +218,7 @@ export function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gradient-to-br from-muted/30 to-white">
+      {/* <section className="py-20 bg-gradient-to-br from-muted/30 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,7 +262,7 @@ export function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

@@ -36,7 +36,7 @@ export function ResourcesPage() {
       category: 'Case Study',
       date: 'February 28, 2025',
       readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1690100691688-f3b97fc15392?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGNoaWxkJTIwc21pbGluZyUyMG91dGRvb3J8ZW58MXx8fHwxNzU5NzM2MzQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6827-high.jpg',
     },
     {
       title: 'Building Emotional Resilience in Children with Behavioral Challenges',
