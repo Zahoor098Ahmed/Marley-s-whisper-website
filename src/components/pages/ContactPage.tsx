@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare, Calendar as CalendarIcon } from 'lucide-react';
@@ -14,24 +15,31 @@ interface ContactPageProps {
 
 export function ContactPage({ onNavigate }: ContactPageProps) {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [activeForm, setActiveForm] = useState('school');
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    school: { schoolName: '', referringContact: '', email: '', phone: '', message: '' },
+    homeLearning: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
+    familySupport: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (formType: string) => (e: React.FormEvent) => {
     e.preventDefault();
     // In a real implementation, this would send to backend/Supabase
+    console.log(`${formType} form submitted:`, formData[formType]);
     setFormSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setFormData({
+      school: { schoolName: '', referringContact: '', email: '', phone: '', message: '' },
+      homeLearning: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
+      familySupport: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
+    });
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleChange = (formType: string, field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [formType]: { ...prev[formType], [field]: value },
+    }));
   };
 
   const contactInfo = [
@@ -168,80 +176,248 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                       </Button>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid sm:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Full Name *</Label>
-                          <Input
-                            id="name"
-                            required
-                            value={formData.name}
-                            onChange={(e) => handleChange('name', e.target.value)}
-                            placeholder="John Smith"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email">Email Address *</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => handleChange('email', e.target.value)}
-                            placeholder="john@example.com"
-                          />
-                        </div>
+                    <div className="space-y-6">
+                      {/* Form Toggle Buttons */}
+                      <div className="flex space-x-8 mb-6">
+                        <Button
+                          variant={activeForm === 'school' ? 'default' : 'outline'}
+                          onClick={() => setActiveForm('school')}
+                          className="flex-1"
+                        >
+                          School
+                        </Button>
+                        <Button
+                          variant={activeForm === 'homeLearning' ? 'default' : 'outline'}
+                          onClick={() => setActiveForm('homeLearning')}
+                          className="flex-1 mr-3"  
+                        >
+                          Home Learning
+                        </Button>
+                        <Button
+                          variant={activeForm === 'familySupport' ? 'default' : 'outline'}
+                          onClick={() => setActiveForm('familySupport')}
+                          className="flex-1"
+                        >
+                          Family Support
+                        </Button>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="phone">Phone Number</Label>
-                          <Input
-                            id="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => handleChange('phone', e.target.value)}
-                            placeholder="+44 1234 567890"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="subject">Subject *</Label>
-                          <Select
-                            value={formData.subject}
-                            onValueChange={(value) => handleChange('subject', value)}
-                            required
-                          >
-                            <SelectTrigger id="subject">
-                              <SelectValue placeholder="Select a subject" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="consultation">Free Consultation</SelectItem>
-                              <SelectItem value="home-learning">Home-Based Learning</SelectItem>
-                              <SelectItem value="school-support">In-School Support</SelectItem>
-                              <SelectItem value="family-program">Family Programs</SelectItem>
-                              <SelectItem value="general">General Inquiry</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      </div>
+                      {/* School Form */}
+                      {activeForm === 'school' && (
+                        <form onSubmit={handleSubmit('school')} className="space-y-6">
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="schoolName">Name of School *</Label>
+                              <Input
+                                id="schoolName"
+                                required
+                                value={formData.school.schoolName}
+                                onChange={(e) => handleChange('school', 'schoolName', e.target.value)}
+                                placeholder="Example School"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="referringContact">Referring Contact *</Label>
+                              <Input
+                                id="referringContact"
+                                required
+                                value={formData.school.referringContact}
+                                onChange={(e) => handleChange('school', 'referringContact', e.target.value)}
+                                placeholder="Jane Doe"
+                              />
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="email">Email Address *</Label>
+                              <Input
+                                id="email"
+                                type="email"
+                                required
+                                value={formData.school.email}
+                                onChange={(e) => handleChange('school', 'email', e.target.value)}
+                                placeholder="john@example.com"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone">Phone Number</Label>
+                              <Input
+                                id="phone"
+                                type="tel"
+                                value={formData.school.phone}
+                                onChange={(e) => handleChange('school', 'phone', e.target.value)}
+                                placeholder="+44 1234 567890"
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="message">Message *</Label>
+                            <Textarea
+                              id="message"
+                              required
+                              value={formData.school.message}
+                              onChange={(e) => handleChange('school', 'message', e.target.value)}
+                              placeholder="Tell us about your needs..."
+                              rows={6}
+                            />
+                          </div>
+                          <Button type="submit" size="lg" className="w-full group">
+                            Send Message
+                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </form>
+                      )}
 
-                      <div className="space-y-2">
-                        <Label htmlFor="message">Message *</Label>
-                        <Textarea
-                          id="message"
-                          required
-                          value={formData.message}
-                          onChange={(e) => handleChange('message', e.target.value)}
-                          placeholder="Tell us about your child's needs and how we can help..."
-                          rows={6}
-                        />
-                      </div>
+                      {/* Home Learning Form */}
+                      {activeForm === 'homeLearning' && (
+                        <form onSubmit={handleSubmit('homeLearning')} className="space-y-6">
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="referringAgency">Referring Agency *</Label>
+                              <Select
+                                value={formData.homeLearning.referringAgency}
+                                onValueChange={(value) => handleChange('homeLearning', 'referringAgency', value)}
+                                required
+                              >
+                                <SelectTrigger id="referringAgency">
+                                  <SelectValue placeholder="Select an agency" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="police">Police</SelectItem>
+                                  <SelectItem value="socialCare">Social Care</SelectItem>
+                                  <SelectItem value="yot">YOT</SelectItem>
+                                  <SelectItem value="school">School</SelectItem>
+                                  <SelectItem value="parent">Parent</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="contactName">Contact Name *</Label>
+                              <Input
+                                id="contactName"
+                                required
+                                value={formData.homeLearning.contactName}
+                                onChange={(e) => handleChange('homeLearning', 'contactName', e.target.value)}
+                                placeholder="John Smith"
+                              />
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="email">Email Address *</Label>
+                              <Input
+                                id="email"
+                                type="email"
+                                required
+                                value={formData.homeLearning.email}
+                                onChange={(e) => handleChange('homeLearning', 'email', e.target.value)}
+                                placeholder="john@example.com"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone">Phone Number</Label>
+                              <Input
+                                id="phone"
+                                type="tel"
+                                value={formData.homeLearning.phone}
+                                onChange={(e) => handleChange('homeLearning', 'phone', e.target.value)}
+                                placeholder="+44 1234 567890"
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="message">Message *</Label>
+                            <Textarea
+                              id="message"
+                              required
+                              value={formData.homeLearning.message}
+                              onChange={(e) => handleChange('homeLearning', 'message', e.target.value)}
+                              placeholder="Tell us about your child's needs..."
+                              rows={6}
+                            />
+                          </div>
+                          <Button type="submit" size="lg" className="w-full group">
+                            Send Message
+                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </form>
+                      )}
 
-                      <Button type="submit" size="lg" className="w-full group">
-                        Send Message
-                        <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </form>
+                      {/* Family Support Form */}
+                      {activeForm === 'familySupport' && (
+                        <form onSubmit={handleSubmit('familySupport')} className="space-y-6">
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="referringAgency">Referring Agency *</Label>
+                              <Select
+                                value={formData.familySupport.referringAgency}
+                                onValueChange={(value) => handleChange('familySupport', 'referringAgency', value)}
+                                required
+                              >
+                                <SelectTrigger id="referringAgency">
+                                  <SelectValue placeholder="Select an agency" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="police">Police</SelectItem>
+                                  <SelectItem value="socialCare">Social Care</SelectItem>
+                                  <SelectItem value="yot">YOT</SelectItem>
+                                  <SelectItem value="school">School</SelectItem>
+                                  <SelectItem value="parent">Parent</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="contactName">Contact Name *</Label>
+                              <Input
+                                id="contactName"
+                                required
+                                value={formData.familySupport.contactName}
+                                onChange={(e) => handleChange('familySupport', 'contactName', e.target.value)}
+                                placeholder="John Smith"
+                              />
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="email">Email Address *</Label>
+                              <Input
+                                id="email"
+                                type="email"
+                                required
+                                value={formData.familySupport.email}
+                                onChange={(e) => handleChange('familySupport', 'email', e.target.value)}
+                                placeholder="john@example.com"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone">Phone Number</Label>
+                              <Input
+                                id="phone"
+                                type="tel"
+                                value={formData.familySupport.phone}
+                                onChange={(e) => handleChange('familySupport', 'phone', e.target.value)}
+                                placeholder="+44 1234 567890"
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="message">Message *</Label>
+                            <Textarea
+                              id="message"
+                              required
+                              value={formData.familySupport.message}
+                              onChange={(e) => handleChange('familySupport', 'message', e.target.value)}
+                              placeholder="Tell us about your family's needs..."
+                              rows={6}
+                            />
+                          </div>
+                          <Button type="submit" size="lg" className="w-full group">
+                            Send Message
+                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </form>
+                      )}
+                    </div>
                   )}
                 </CardContent>
               </Card>
@@ -311,13 +487,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                       onClick={() => onNavigate('gallery')}
                     >
                       Read Testimonials
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start"
-                      onClick={() => onNavigate('about')}
-                    >
-                      Meet Our Team
                     </Button>
                   </div>
                 </CardContent>

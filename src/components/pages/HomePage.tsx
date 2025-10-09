@@ -1,3 +1,4 @@
+
 import { motion } from 'motion/react';
 import { Home, BookOpen, Users, Heart, ArrowRight, Sparkles, Star, MessageSquare } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -11,25 +12,31 @@ interface HomePageProps {
 export function HomePage({ onNavigate }: HomePageProps) {
   const services = [
     {
+      icon: BookOpen,
+      title: 'In-School Support',
+      description: (
+        <>
+           Professional coaching and mentoring within school settings{' '}
+           <span style={{ color: '#0000FF' }}>to fully engage every child and</span>{' '}
+           prevent exclusion.
+       </>
+      ),
+      color: 'bg-accent/20 text-accent-foreground',
+      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_7892-high-gzzzmc.jpg',
+    },
+    {
       icon: Home,
       title: 'Home-Based Learning',
       description: 'Personalised educational programmes delivered in the comfort and safety of your home.',
       color: 'bg-primary/10 text-primary',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_5099-standard.jpg?enable-io=true&amp;enable=upscale&amp;crop=1351%2C1351%2Cx84%2Cy0%2Csafe&amp;width=1020&amp;height=1020',
-    },
-    {
-      icon: BookOpen,
-      title: 'In-School Support',
-      description: 'Professional coaching and mentoring within school settings to prevent exclusion.',
-      color: 'bg-accent/20 text-accent-foreground',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6245-high.jpg',
+      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0689-high-w6ypkh.jpg',
     },
     {
       icon: Users,
       title: 'Family Support Programmes',
       description: 'Holistic support involving the whole family in the educational journey.',
       color: 'bg-secondary/30 text-secondary-foreground',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0495-standard.jpg?enable-io=true&amp;enable=upscale&amp;crop=1920%2C1920%2Cx0%2Cy320%2Csafe&amp;width=1020&amp;height=1020',
+      imageSrc: 'https://prevention.psu.edu/wp-content/uploads/2022/05/family-hands_AdobeStock_224157897_Artem-Web.jpeg',
     },
   ];
 
@@ -53,7 +60,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-sm">Compassionate Educational Support</span>
+                <span className="text-sm">Where care meets education for a lifelong life of learning</span>
               </div>
               
               <h1 className="mb-6">
@@ -66,7 +73,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" onClick={() => onNavigate('services')} className="group">
-                  Explore Our Services
+                  Explore What We Offer
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button size="lg" variant="outline" onClick={() => onNavigate('contact')}>
@@ -90,7 +97,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
               </div>
               
-              {/* Floating Stats Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -151,7 +157,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="mb-3 text-3xl font-semibold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our Services</h2>
+            <h2 className="mb-3 text-3xl font-semibold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">What We Offer</h2>
             <div className="mx-auto h-px w-16 bg-primary/30 mb-6" />
             <div className="max-w-3xl mx-auto rounded-2xl bg-white/60 backdrop-blur p-6 md:p-8 ring-1 ring-primary/10 shadow-sm">
               <div className="text-lg leading-relaxed text-muted-foreground space-y-4">
@@ -216,7 +222,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mt-12"
           >
             <Button size="lg" onClick={() => onNavigate('services')} className="group">
-              View All Services
+              View All What We Offer
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>

@@ -55,7 +55,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         'We deliver small group or whole school training sessions',
       ],
       benefits: [
-        'Keeps children engaged in mainstream education',
+        'Keeps children engaged in education',
         'Builds teachers’ confidence',
         'Reduces exclusions',
         'Develops coping strategies for challenging situations',
@@ -111,9 +111,8 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
               <Heart className="w-4 h-4" />
-              <span className="text-sm">Our Services</span>
+              <span className="text-sm">What we offer</span>
             </div>
-            <h1 className="mb-3 text-4xl font-semibold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Comprehensive Educational Support</h1>
             <div className="mx-auto h-px w-16 bg-primary/30 mb-6" />
             <div className="max-w-3xl mx-auto rounded-2xl bg-white/60 backdrop-blur p-6 md:p-8 ring-1 ring-primary/10 shadow-sm">
               <div className="text-lg leading-relaxed text-muted-foreground space-y-4">
