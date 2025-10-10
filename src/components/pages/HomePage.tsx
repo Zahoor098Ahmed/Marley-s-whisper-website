@@ -60,7 +60,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-sm">Where care meets education for a lifelong life of learning</span>
+                <span className="text-sm">Life Instead of "Love"</span>
               </div>
               
               <h1 className="mb-6">
