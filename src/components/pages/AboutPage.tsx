@@ -12,7 +12,7 @@ export function AboutPage() {
     },
     {
       icon: Target,
-      title: 'Personalized Approach',
+      title: 'Personalised Approach',
       description: 'We tailor our methods to each child\'s unique needs and learning style.',
     },
     {
@@ -66,7 +66,7 @@ export function AboutPage() {
             <h1 className="mb-6">About Marley's Whisper</h1>
             <p className="text-lg text-muted-foreground">
               Founded on the belief that every child deserves the opportunity to thrive, Marley's Whisper 
-              provides compassionate, personalized educational support for children facing behavioral challenges 
+              provides compassionate, personalised educational support for children facing behavioral challenges 
               or exclusion risks.
             </p>
           </motion.div>
@@ -101,28 +101,85 @@ export function AboutPage() {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
                 <Lightbulb className="w-4 h-4" />
-                <span className="text-sm">The Marley's Whisper Story</span>
+                <span className="text-sm">The Valerie's Story</span>
               </div>
               
-              <h2>Where It All Began</h2>
+              <h2>Where it all started</h2>
               
               <p className="text-muted-foreground">
-                Marley's Whisper was founded by Emily Richardson, an experienced educator who witnessed too many 
+                Marley's Whisper was founded by Merceron, an experienced educator who witnessed too many 
                 children being failed by traditional educational systems. After years of working in mainstream 
                 schools, she realized that children facing behavioral challenges or exclusion risks needed a 
-                different approach—one rooted in compassion, understanding, and personalized support.
+                different approach—one rooted in compassion, understanding, and personalised support.
               </p>
               
               <p className="text-muted-foreground">
-                The name "Marley's Whisper" pays tribute to Emily's beloved therapy dog, Marley, whose gentle 
-                presence helped countless children feel safe, calm, and ready to learn. Like Marley's soft whisper, 
-                our approach is gentle yet powerful, meeting children exactly where they are.
+                The name "Marley's Whisper" pays tribute to Merceron's beloved therapy dog, Marley, whose gentle 
+                presence helped countless children feel safe, calm, and ready to learn. Marley has been an integral part 
+                of the journey, providing comfort and emotional support to children who struggle in traditional learning 
+                environments. Like Marley's soft whisper, our approach is gentle yet powerful, meeting children exactly 
+                where they are.
               </p>
               
               <p className="text-muted-foreground">
                 Today, we've grown into a team of dedicated professionals, all united by the belief that every 
                 child deserves the chance to discover their potential in a supportive, nurturing environment.
               </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marley Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6 order-2 lg:order-1"
+            >
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
+                <Heart className="w-4 h-4" />
+                <span className="text-sm">Meet Marley</span>
+              </div>
+              
+              <h2>Marley</h2>
+              
+              <p className="text-muted-foreground">
+                From the age of 3 months, I have been going to school and making friends with little humans. I was always the winner at every race in the 
+                playground and learnt to play football. People are surprised when they see that I wear a football shirt and I play with my paws!
+              </p>
+              
+              <p className="text-muted-foreground">
+                The little humans taught me lots of tricks as well. I can jump through hoops and over bars. I can sit up and cross my front paws and I am 
+                very good at singing to music. The little humans love it when there are treats involved. I help the little humans use the right tone of voice and give 
+                eye contact when they speak. They say that I give them confidence and it makes me feel really good. Some little humans even read me 
+                stories when they refuse to read aloud to adult humans.
+              </p>
+              
+              <p className="text-muted-foreground">
+                I may be 9 years old now, but I still like long walks and I walk very well on the lead! I sit down on the pavement and make sure that I get the 
+                signal that it is safe to go before crossing the road. I love a good cuddle and a lot of attention.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-blue-50 flex items-center justify-center">
+                <img
+                  src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/photo-marley-high-7samws.jpg?enable-io=true&enable=upscale&crop=749%2C871%2Cx0%2Cy155%2Csafe&width=749&height=871"
+                  alt="Marley the therapy dog jumping through a hoop"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -145,7 +202,7 @@ export function AboutPage() {
                   </div>
                   <h3 className="mb-4">Our Mission</h3>
                   <p className="text-muted-foreground">
-                    To provide compassionate, personalized educational support that helps children overcome 
+                    To provide compassionate, personalised educational support that helps children overcome 
                     behavioral challenges and exclusion risks, empowering them to rediscover their love for 
                     learning and reach their full potential.
                   </p>

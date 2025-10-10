@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Mail, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -7,7 +7,7 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (email) {
       setSubscribed(true);
@@ -22,7 +22,7 @@ export function NewsletterSignup() {
         <Mail className="w-12 h-12 mx-auto mb-4" />
         <h2 className="mb-3">Stay Updated</h2>
         <p className="mb-8 opacity-90 max-w-2xl mx-auto">
-          Subscribe to our newsletter for educational tips, success stories, and updates on our programs.
+          Subscribe to our newsletter for educational tips, success stories, and updates on our programmes.
         </p>
         
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">

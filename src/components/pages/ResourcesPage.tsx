@@ -12,7 +12,7 @@ export function ResourcesPage() {
       category: 'Guidance',
       date: 'March 15, 2025',
       readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1758598737529-3b326b4c8a55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMHJlYWRpbmclMjBib29rcyUyMGVkdWNhdGlvbnxlbnwxfHx8fDE3NTk3MzYzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6827-high.jpg',
     },
     {
       title: 'Making Learning Fun: Creative Activities for Reluctant Learners',
@@ -28,23 +28,16 @@ export function ResourcesPage() {
       category: 'Guidance',
       date: 'March 5, 2025',
       readTime: '10 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6166-high.jpg',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0689-high-w6ypkh.jpg',
     },
-    {
-      title: 'Success Story: How Oliver Returned to Mainstream Education',
-      excerpt: 'A case study following one child\'s journey from exclusion risk to thriving in school with the right support.',
-      category: 'Case Study',
-      date: 'February 28, 2025',
-      readTime: '8 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6827-high.jpg',
-    },
+
     {
       title: 'Building Emotional Resilience in Children with Behavioral Challenges',
       excerpt: 'Strategies for helping children develop coping mechanisms and emotional regulation skills.',
       category: 'Tips',
       date: 'February 20, 2025',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1758612898464-06a3fec97767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb25hbCUyMHN1cHBvcnQlMjB0ZWFjaGVyJTIwY2hpbGR8ZW58MXx8fHwxNzU5NzM2MzQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6166-high.jpg',
     },
     {
       title: 'The Benefits of Outdoor Learning for Child Development',

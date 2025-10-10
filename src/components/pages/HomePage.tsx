@@ -13,8 +13,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
   const services = [
     {
       icon: BookOpen,
-      title: 'In-School Support',
-      description: (
+      title: 'In-School Support and Coaching',
+       description: (
         <>
            Professional coaching and mentoring within school settings{' '}
            <span style={{ color: '#0000FF' }}>to fully engage every child and</span>{' '}
@@ -34,7 +34,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     {
       icon: Users,
       title: 'Family Support Programmes',
-      description: 'Holistic support involving the whole family in the educational journey.',
+      description: 'Holistic approach involving the whole family in the educational journey.',
       color: 'bg-secondary/30 text-secondary-foreground',
       imageSrc: 'https://prevention.psu.edu/wp-content/uploads/2022/05/family-hands_AdobeStock_224157897_Artem-Web.jpeg',
     },
@@ -225,42 +225,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
               View All What We Offer
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Testimonial */}
-      <section className="py-20 bg-primary/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card className="shadow-xl">
-              <CardContent className="p-8 lg:p-12">
-                <MessageSquare className="w-12 h-12 text-primary mb-6" />
-                <blockquote className="text-xl lg:text-2xl text-foreground mb-6">
-                  "Marley's Whisper transformed my son's relationship with learning. The personalized approach 
-                  and compassionate support helped him rediscover his love for education."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-primary fill-current" />
-                  </div>
-                  <div>
-                    <div className="text-sm">Sarah Thompson</div>
-                    <div className="text-sm text-muted-foreground">Parent, London</div>
-                  </div>
-                </div>
-                <div className="mt-6">
-                  <Button variant="outline" onClick={() => onNavigate('gallery')}>
-                    Read More Testimonials
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
         </div>
       </section>

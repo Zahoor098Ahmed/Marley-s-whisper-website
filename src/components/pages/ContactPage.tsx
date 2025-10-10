@@ -1,5 +1,7 @@
 
-import { useState } from 'react';
+
+import { useState, FormEvent } from 'react';
+
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare, Calendar as CalendarIcon } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
@@ -22,7 +24,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     familySupport: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
   });
 
-  const handleSubmit = (formType: string) => (e: React.FormEvent) => {
+  const handleSubmit = (formType: string) => (e: FormEvent) => {
     e.preventDefault();
     // In a real implementation, this would send to backend/Supabase
     console.log(`${formType} form submitted:`, formData[formType]);
@@ -46,19 +48,13 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'info@marleyswhisper.com',
-      link: 'mailto:info@marleyswhisper.com',
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      content: '+44 (0) 1234 567890',
-      link: 'tel:+441234567890',
+      content: 'Merceron@marleyswhisper.com',
+      link: 'mailto:Merceron@marleyswhisper.com',
     },
     {
       icon: MapPin,
       title: 'Location',
-      content: 'Serving families across the United Kingdom',
+      content: 'Hampshire, IOW, Surrey, Berkshire',
       link: null,
     },
     {
@@ -80,7 +76,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     },
     {
       question: 'What areas do you cover?',
-      answer: 'We serve families throughout the United Kingdom. For home-based services, we cover a wide geographic area.',
+      answer: 'We serve families in Hampshire, Isle of Wight, Surrey, and Berkshire.',
     },
   ];
 

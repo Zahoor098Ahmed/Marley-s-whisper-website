@@ -25,7 +25,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
             </div>
             <p className="text-sm opacity-90">
-              Compassionate educational support helping children thrive through personalized learning programs.
+              Compassionate educational support helping children thrive through personalised learning programmes.
             </p>
           </div>
 
@@ -52,15 +52,11 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm opacity-90">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>info@marleyswhisper.com</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm opacity-90">
-                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+44 (0) 1234 567890</span>
+                <span>Merceron@marleyswhisper.com</span>
               </li>
               <li className="flex items-start gap-2 text-sm opacity-90">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>United Kingdom</span>
+                <span>Hampshire, IOW, Surrey, Berkshire</span>
               </li>
             </ul>
           </div>
