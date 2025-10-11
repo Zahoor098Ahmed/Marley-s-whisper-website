@@ -32,7 +32,7 @@ export function BlogDetailPage({ params, onNavigate }: { params: Record<string, 
               </p>
             </div>
             <div className="flex-shrink-0">
-              <Button variant="outline" onClick={() => onNavigate?.('resources')}>Back to Resources</Button>
+              <Button variant="outline" onClick={() => onNavigate?.('resources')}>Back to Blogs</Button>
             </div>
           </motion.div>
         </div>
