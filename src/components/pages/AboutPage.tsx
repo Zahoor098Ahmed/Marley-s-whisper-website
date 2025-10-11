@@ -114,7 +114,7 @@ export function AboutPage() {
               </p>
               
               <p className="text-muted-foreground">
-                The name "Marley's Whisper" pays tribute to Merceron's beloved therapy dog, Marley, whose gentle 
+                The name "Marley's Whisper" pays tribute to Valerie Merceron's beloved therapy dog, Marley, whose gentle 
                 presence helped countless children feel safe, calm, and ready to learn. Marley has been an integral part 
                 of the journey, providing comfort and emotional support to children who struggle in traditional learning 
                 environments. Like Marley's soft whisper, our approach is gentle yet powerful, meeting children exactly 
