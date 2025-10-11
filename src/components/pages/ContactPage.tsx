@@ -92,7 +92,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <Phone className="w-4 h-4 text-green-600" />
               <span className="text-sm">Get in Touch</span>
             </div>
-            <h1 className="mb-6">Contact Us</h1>
+            {/* <h1 className="mb-6">Contact Us</h1> */}
             <p className="text-lg text-muted-foreground">
               Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
@@ -237,9 +237,9 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5">
           <div className="text-center">
             <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-            <h3 className="mb-2">Serving the UK</h3>
+            <h3 className="mb-2">Hampshire, IOW, Surrey, Berkshire </h3>
             <p className="text-muted-foreground">
-              We provide support to families across the United Kingdom
+              We provide support to families across the Hampshire, IOW, Surrey, Berkshire 
             </p>
           </div>
         </div>

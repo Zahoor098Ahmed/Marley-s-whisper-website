@@ -76,9 +76,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   const stats = [
     { value: 100, suffix: '+', label: 'Children Supported' },
-    { value: 95, suffix: '%', label: 'Success Rate' },
+    
     { value: 10, suffix: '+', label: 'Years Experience' },
-    { value: 50, suffix: '+', label: 'Partner Schools' },
+   
   ];
 
   return (
@@ -94,7 +94,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-sm">"Life" Instead Of "Love"</span>
+                {/* <span className="text-sm">"Life" Instead Of "Love"</span> */}
+                <span>I learn to read with Marley and it gave me confidence. I wasn't going to school before, but now I go every day and I love it.</span>
               </div>
               
               <h1 className="mb-6">
@@ -163,7 +164,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* Stats Section */}
       <section className="bg-white py-12 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 gap-8 w-fit mx-auto place-items-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -174,7 +175,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 className="text-center"
               >
                 <motion.div
-                  className="mb-2 leading-none inline-flex items-baseline gap-1 rounded-xl px-3 py-2 backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/8 transition-all hover:scale-[1.02]"
+                  className="mb-2 leading-none inline-flex items-center gap-1 mx-auto rounded-xl px-3 py-2 backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/8 transition-all hover:scale-[1.02]"
                   initial={{ opacity: 0, y: 8, scale: 0.98 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.4 }}
@@ -183,7 +184,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <span className="text-3xl lg:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-sm gradient-animated">
                     <CountUp end={stat.value} />
                   </span>
-                  <span className="align-baseline text-xl lg:text-2xl font-semibold text-secondary">
+                  <span className="text-xl lg:text-2xl font-semibold text-secondary">
                     {stat.suffix}
                   </span>
                 </motion.div>
@@ -285,9 +286,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-6">Ready to Help Your Child Thrive?</h2>
+            <h2 className="mb-6">Ready to Help our Child Thrive?</h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Get in touch today to discuss how we can support our child's educational journey with 
+              Get in touch today to discuss how we can support our child's growth journey with 
               compassion and expertise.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

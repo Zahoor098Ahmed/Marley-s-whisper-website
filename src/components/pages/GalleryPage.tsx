@@ -189,7 +189,7 @@ export function GalleryPage() {
               <Heart className="w-4 h-4" />
               <span className="text-sm">Learning is Fun</span>
             </div>
-            <h1 className="mb-6">Gallery & Testimonials</h1>
+            {/* <h1 className="mb-6">Gallery & Testimonials</h1> */}
             <p className="text-lg text-muted-foreground">
               See the joy of learning in action and hear from the families we've supported.
             </p>

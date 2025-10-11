@@ -333,7 +333,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             <h2 className="mb-6">Not Sure Which Service is Right?</h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
               Contact us for a free consultation. We'll discuss our child's unique needs and recommend 
-              the best approach to support their educational journey.
+              the best approach to support their growth journey.
             </p>
             <Button
               size="lg"

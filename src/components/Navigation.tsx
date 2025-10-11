@@ -16,7 +16,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Services' },
     { id: 'gallery', label: 'Gallery & Testimonials' },
-    { id: 'resources', label: 'Resources' },
+    { id: 'resources', label: 'Blogs' },
     { id: 'contact', label: 'Contact' },
   ];
 

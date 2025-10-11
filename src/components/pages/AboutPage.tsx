@@ -63,7 +63,7 @@ export function AboutPage() {
               <Compass className="w-4 h-4" />
               <span className="text-sm">Our Story</span>
             </div>
-            <h1 className="mb-6">About Marley's Whisper</h1>
+            {/* <h1 className="mb-6">About Marley's Whisper</h1> */}
             <p className="text-lg text-muted-foreground">
               Founded on the belief that every child deserves the opportunity to thrive, Marley's Whisper 
               provides compassionate, personalised educational support for children facing behavioural challenges 
@@ -87,7 +87,8 @@ export function AboutPage() {
                <ImageWithFallback
                  src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0279-high.jpg?enable-io=true&enable=upscale&crop=926%2C1389%2Cx216%2Cy0%2Csafe&width=310&height=465"
                  alt="Peaceful nature scene representing calm learning environment"
-                 className="w-full h-[500px] bject-contain scale-100"
+                //  className="w-full h-[500px] bject-contain scale-100"
+                 className="w-full h-[500px] object-contain"
                />
             </div>
             </motion.div>
@@ -107,23 +108,23 @@ export function AboutPage() {
               <h2>Where it all started</h2>
               
               <p className="text-muted-foreground">
-                Marley's Whisper was founded by Valerie Merceron, an experienced educator who witnessed too many 
-                children being failed by traditional educational systems. After years of working in mainstream 
-                schools, she realized that children facing behavioural challenges or exclusion risks needed a 
-                different approach—one rooted in compassion, understanding, and personalised support.
+                Marley’s Whisper was founded by Valerie Merceron, an experienced educator who witnessed far too many 
+                children being failed by traditional educational systems. After years of working in mainstream schools, 
+                she realised that children facing behavioural challenges or at risk of exclusion needed a different 
+                approach — one rooted in compassion, understanding, and personalised support.
               </p>
               
               <p className="text-muted-foreground">
-                The name "Marley's Whisper" pays tribute to Valerie Merceron's beloved therapy dog, Marley, whose gentle 
+                The name “Marley’s Whisper” pays tribute to Valerie Merceron’s beloved therapy dog, Marley, whose gentle 
                 presence helped countless children feel safe, calm, and ready to learn. Marley has been an integral part 
                 of the journey, providing comfort and emotional support to children who struggle in traditional learning 
-                environments. Like Marley's soft whisper, our approach is gentle yet powerful, meeting children exactly 
+                environments. Like Marley’s soft whisper, our approach is gentle yet powerful, meeting children exactly 
                 where they are.
               </p>
               
               <p className="text-muted-foreground">
-                Today, we've grown into a team of dedicated professionals, all united by the belief that every 
-                child deserves the chance to discover their potential in a supportive, nurturing environment.
+                Today, we’ve grown into a team of dedicated professionals, all united by the belief that every 
+                child deserves the chance to discover their potential in a supportive and nurturing environment.
               </p>
             </motion.div>
           </div>

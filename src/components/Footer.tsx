@@ -100,13 +100,13 @@ export function Footer({ onNavigate }: FooterProps) {
               <button className="hover:underline" onClick={() => onNavigate('privacy')}>Privacy Policy</button>
               <button className="hover:underline" onClick={() => onNavigate('terms')}>Terms of Service</button>
             </div>
-            <p className="text-sm opacity-90 text-white">
+            <p className="text-xs opacity-90 text-white text-center">
             Website is Developed by  
             <a 
               href="https://timeglobaltech.com/portfolio/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:underline ml-2"
+              className="underline hover:opacity-100 ml-2"
             >
                Time Global
             </a>

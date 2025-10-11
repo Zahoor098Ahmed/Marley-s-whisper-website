@@ -38,9 +38,10 @@ export function ResourcesPage({ onNavigate }: { onNavigate?: (page: string) => v
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
               <BookOpen className="w-4 h-4" />
-              <span className="text-sm">Educational Resources</span>
+              <span className="text-sm">Educational Blogs</span>
             </div>
-            <h1 className="mb-6">Resources & Blog</h1>
+            {/* <h1 className="mb-6">Resources & Blog</h1> */}
+            {/* <h1 className="mb-6"> Blog</h1> */}
             <p className="text-lg text-muted-foreground">
               Expert guidance, practical tips, and inspiring stories to support our child's educational journey.
             </p>
@@ -49,7 +50,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate?: (page: string) => v
       </section>
 
       {/* Featured Resources */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -97,7 +98,7 @@ export function ResourcesPage({ onNavigate }: { onNavigate?: (page: string) => v
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Blog Posts */}
       <section className="py-20 bg-gradient-to-br from-muted/30 to-white">
