@@ -25,7 +25,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
             </div>
             <p className="text-sm opacity-90">
-              Compassionate educational support helping children thrive through personalised learning programmes.
+              Compassionate learning support helping children thrive through personalised programmes.
             </p>
           </div>
 
