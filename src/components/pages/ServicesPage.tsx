@@ -21,15 +21,15 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         'We meet with the parent/carer and the school member of staff to discuss the issues and agree the way forward',
         'We observe the child\'s behaviour in the context of their school',
         'We complete a baseline assessment of needs at their school',
-        'We coach teacher(s) to plan around the child\'s needs',
-        'We coach teacher(s) to develop strategies to encourage positive behaviour for learning',
+        'We coach teachers to plan around the child\'s needs',
+        'We coach teachers to develop strategies to encourage positive behaviour for learning',
         'We support and monitor the impact of the intervention',
         'We create a model of good practice',
         'We work with school leaders to create systems to sustain progress',
         'We deliver small group or whole school training sessions',
       ],
       benefits: [
-        'Keeps children engaged in mainstream education',
+        'Keeps children engaged in education',
         'Builds teachers\' confidence',
         'Reduces exclusions',
         'Develops coping strategies for challenging situations',
@@ -332,7 +332,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
           >
             <h2 className="mb-6">Not Sure Which Service is Right?</h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Contact us for a free consultation. We'll discuss your child's unique needs and recommend 
+              Contact us for a free consultation. We'll discuss our child's unique needs and recommend 
               the best approach to support their educational journey.
             </p>
             <Button

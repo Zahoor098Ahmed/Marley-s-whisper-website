@@ -37,7 +37,7 @@ export function AboutPage() {
     {
       name: 'James Mitchell',
       role: 'Educational Psychologist',
-      bio: 'James specializes in behavioral support and works closely with families to understand and address the root causes of educational challenges.',
+      bio: 'James specializes in behavioural support and works closely with families to understand and address the root causes of educational challenges.',
       image: 'https://images.unsplash.com/photo-1758612898464-06a3fec97767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb25hbCUyMHN1cHBvcnQlMjB0ZWFjaGVyJTIwY2hpbGR8ZW58MXx8fHwxNzU5NzM2MzQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     },
     {
@@ -66,7 +66,7 @@ export function AboutPage() {
             <h1 className="mb-6">About Marley's Whisper</h1>
             <p className="text-lg text-muted-foreground">
               Founded on the belief that every child deserves the opportunity to thrive, Marley's Whisper 
-              provides compassionate, personalised educational support for children facing behavioral challenges 
+              provides compassionate, personalised educational support for children facing behavioural challenges 
               or exclusion risks.
             </p>
           </motion.div>
@@ -84,12 +84,12 @@ export function AboutPage() {
               transition={{ duration: 0.6 }}
             >
              <div className="rounded-2xl overflow-hidden shadow-xl bg-blue-100 flex items-center justify-center">
-  <ImageWithFallback
-    src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0279-high.jpg?enable-io=true&enable=upscale&crop=926%2C1389%2Cx216%2Cy0%2Csafe&width=310&height=465"
-    alt="Peaceful nature scene representing calm learning environment"
-    className="w-full h-[500px] bject-contain scale-100"
-  />
-</div>
+               <ImageWithFallback
+                 src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0279-high.jpg?enable-io=true&enable=upscale&crop=926%2C1389%2Cx216%2Cy0%2Csafe&width=310&height=465"
+                 alt="Peaceful nature scene representing calm learning environment"
+                 className="w-full h-[500px] bject-contain scale-100"
+               />
+            </div>
             </motion.div>
 
             <motion.div
@@ -107,9 +107,9 @@ export function AboutPage() {
               <h2>Where it all started</h2>
               
               <p className="text-muted-foreground">
-                Marley's Whisper was founded by Merceron, an experienced educator who witnessed too many 
+                Marley's Whisper was founded by Valerie Merceron, an experienced educator who witnessed too many 
                 children being failed by traditional educational systems. After years of working in mainstream 
-                schools, she realized that children facing behavioral challenges or exclusion risks needed a 
+                schools, she realized that children facing behavioural challenges or exclusion risks needed a 
                 different approach—one rooted in compassion, understanding, and personalised support.
               </p>
               
@@ -203,7 +203,7 @@ export function AboutPage() {
                   <h3 className="mb-4">Our Mission</h3>
                   <p className="text-muted-foreground">
                     To provide compassionate, personalised educational support that helps children overcome 
-                    behavioral challenges and exclusion risks, empowering them to rediscover their love for 
+                    behavioural challenges and exclusion risks, empowering them to rediscover their love for 
                     learning and reach their full potential.
                   </p>
                 </CardContent>

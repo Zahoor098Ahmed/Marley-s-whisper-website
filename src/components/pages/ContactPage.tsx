@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react';
 
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare, Calendar as CalendarIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Calendar as CalendarIcon } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -57,28 +57,20 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
       content: 'Hampshire, IOW, Surrey, Berkshire',
       link: null,
     },
-    {
-      icon: Clock,
-      title: 'Hours',
-      content: 'Mon-Fri: 9:00 AM - 5:00 PM',
-      link: null,
-    },
   ];
 
-  const faqs = [
-    {
-      question: 'How quickly can we get started?',
-      answer: 'We typically schedule an initial consultation within 2-3 days of your inquiry. Support can begin shortly after that.',
-    },
-    {
-      question: 'Do you work with schools?',
-      answer: 'Yes, we collaborate with schools to provide in-school support and can work alongside existing educational plans.',
-    },
-    {
-      question: 'What areas do you cover?',
-      answer: 'We serve families in Hampshire, Isle of Wight, Surrey, and Berkshire.',
-    },
-  ];
+  // WhatsApp chat link
+  const adminWhatsAppNumber = '447000000000';
+  const defaultWhatsAppMessage = encodeURIComponent("Hello, this is Marley’s Whisper, I’d like to learn more.");
+  const whatsappUrl = `https://wa.me/${adminWhatsAppNumber}?text=${defaultWhatsAppMessage}`;
+
+  // Google Calendar booking link (prefilled event template)
+  const gcTitle = encodeURIComponent("Consultation with Marley's Whisper");
+  const gcDetails = encodeURIComponent("Book a free 10-minute consultation to discuss your child's needs and explore how we can help.");
+  const gcLocation = encodeURIComponent("Online (WhatsApp or Zoom)");
+  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcTitle}&details=${gcDetails}&location=${gcLocation}`;
+
+  // FAQs removed as per request
 
   return (
     <div>
@@ -91,8 +83,13 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
-              <MessageSquare className="w-4 h-4" />
+            <div
+              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 cursor-pointer"
+              title="Open WhatsApp chat"
+              role="button"
+              onClick={() => window.open(whatsappUrl, '_blank')}
+            >
+              <Phone className="w-4 h-4 text-green-600" />
               <span className="text-sm">Get in Touch</span>
             </div>
             <h1 className="mb-6">Contact Us</h1>
@@ -106,7 +103,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
       {/* Contact Info Cards */}
       <section className="py-12 bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
@@ -153,268 +150,31 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <Card>
                 <CardContent className="p-8">
                   <h2 className="mb-6">Send Us a Message</h2>
-                  
-                  {formSubmitted ? (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-12"
+                  <div className="text-center py-10">
+                    <div
+                      className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 cursor-pointer"
+                      title="Chat on WhatsApp"
+                      role="button"
+                      onClick={() => window.open(whatsappUrl, '_blank')}
                     >
-                      <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle2 className="w-8 h-8" />
-                      </div>
-                      <h3 className="mb-2">Message Sent!</h3>
-                      <p className="text-muted-foreground mb-6">
-                        Thank you for contacting us. We'll get back to you within 24 hours.
-                      </p>
-                      <Button onClick={() => setFormSubmitted(false)}>
-                        Send Another Message
-                      </Button>
-                    </motion.div>
-                  ) : (
-                    <div className="space-y-6">
-                      {/* Form Toggle Buttons */}
-                      <div className="flex space-x-8 mb-6">
-                        <Button
-                          variant={activeForm === 'school' ? 'default' : 'outline'}
-                          onClick={() => setActiveForm('school')}
-                          className="flex-1"
-                        >
-                          School
-                        </Button>
-                        <Button
-                          variant={activeForm === 'homeLearning' ? 'default' : 'outline'}
-                          onClick={() => setActiveForm('homeLearning')}
-                          className="flex-1 mr-3"  
-                        >
-                          Home Learning
-                        </Button>
-                        <Button
-                          variant={activeForm === 'familySupport' ? 'default' : 'outline'}
-                          onClick={() => setActiveForm('familySupport')}
-                          className="flex-1"
-                        >
-                          Family Support
-                        </Button>
-                      </div>
-
-                      {/* School Form */}
-                      {activeForm === 'school' && (
-                        <form onSubmit={handleSubmit('school')} className="space-y-6">
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="schoolName">Name of School *</Label>
-                              <Input
-                                id="schoolName"
-                                required
-                                value={formData.school.schoolName}
-                                onChange={(e) => handleChange('school', 'schoolName', e.target.value)}
-                                placeholder="Example School"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="referringContact">Referring Contact *</Label>
-                              <Input
-                                id="referringContact"
-                                required
-                                value={formData.school.referringContact}
-                                onChange={(e) => handleChange('school', 'referringContact', e.target.value)}
-                                placeholder="Jane Doe"
-                              />
-                            </div>
-                          </div>
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="email">Email Address *</Label>
-                              <Input
-                                id="email"
-                                type="email"
-                                required
-                                value={formData.school.email}
-                                onChange={(e) => handleChange('school', 'email', e.target.value)}
-                                placeholder="john@example.com"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="phone">Phone Number</Label>
-                              <Input
-                                id="phone"
-                                type="tel"
-                                value={formData.school.phone}
-                                onChange={(e) => handleChange('school', 'phone', e.target.value)}
-                                placeholder="+44 1234 567890"
-                              />
-                            </div>
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="message">Message *</Label>
-                            <Textarea
-                              id="message"
-                              required
-                              value={formData.school.message}
-                              onChange={(e) => handleChange('school', 'message', e.target.value)}
-                              placeholder="Tell us about your needs..."
-                              rows={6}
-                            />
-                          </div>
-                          <Button type="submit" size="lg" className="w-full group">
-                            Send Message
-                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </form>
-                      )}
-
-                      {/* Home Learning Form */}
-                      {activeForm === 'homeLearning' && (
-                        <form onSubmit={handleSubmit('homeLearning')} className="space-y-6">
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="referringAgency">Referring Agency *</Label>
-                              <Select
-                                value={formData.homeLearning.referringAgency}
-                                onValueChange={(value) => handleChange('homeLearning', 'referringAgency', value)}
-                                required
-                              >
-                                <SelectTrigger id="referringAgency">
-                                  <SelectValue placeholder="Select an agency" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="police">Police</SelectItem>
-                                  <SelectItem value="socialCare">Social Care</SelectItem>
-                                  <SelectItem value="yot">YOT</SelectItem>
-                                  <SelectItem value="school">School</SelectItem>
-                                  <SelectItem value="parent">Parent</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="contactName">Contact Name *</Label>
-                              <Input
-                                id="contactName"
-                                required
-                                value={formData.homeLearning.contactName}
-                                onChange={(e) => handleChange('homeLearning', 'contactName', e.target.value)}
-                                placeholder="John Smith"
-                              />
-                            </div>
-                          </div>
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="email">Email Address *</Label>
-                              <Input
-                                id="email"
-                                type="email"
-                                required
-                                value={formData.homeLearning.email}
-                                onChange={(e) => handleChange('homeLearning', 'email', e.target.value)}
-                                placeholder="john@example.com"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="phone">Phone Number</Label>
-                              <Input
-                                id="phone"
-                                type="tel"
-                                value={formData.homeLearning.phone}
-                                onChange={(e) => handleChange('homeLearning', 'phone', e.target.value)}
-                                placeholder="+44 1234 567890"
-                              />
-                            </div>
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="message">Message *</Label>
-                            <Textarea
-                              id="message"
-                              required
-                              value={formData.homeLearning.message}
-                              onChange={(e) => handleChange('homeLearning', 'message', e.target.value)}
-                              placeholder="Tell us about your child's needs..."
-                              rows={6}
-                            />
-                          </div>
-                          <Button type="submit" size="lg" className="w-full group">
-                            Send Message
-                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </form>
-                      )}
-
-                      {/* Family Support Form */}
-                      {activeForm === 'familySupport' && (
-                        <form onSubmit={handleSubmit('familySupport')} className="space-y-6">
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="referringAgency">Referring Agency *</Label>
-                              <Select
-                                value={formData.familySupport.referringAgency}
-                                onValueChange={(value) => handleChange('familySupport', 'referringAgency', value)}
-                                required
-                              >
-                                <SelectTrigger id="referringAgency">
-                                  <SelectValue placeholder="Select an agency" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="police">Police</SelectItem>
-                                  <SelectItem value="socialCare">Social Care</SelectItem>
-                                  <SelectItem value="yot">YOT</SelectItem>
-                                  <SelectItem value="school">School</SelectItem>
-                                  <SelectItem value="parent">Parent</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="contactName">Contact Name *</Label>
-                              <Input
-                                id="contactName"
-                                required
-                                value={formData.familySupport.contactName}
-                                onChange={(e) => handleChange('familySupport', 'contactName', e.target.value)}
-                                placeholder="John Smith"
-                              />
-                            </div>
-                          </div>
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <Label htmlFor="email">Email Address *</Label>
-                              <Input
-                                id="email"
-                                type="email"
-                                required
-                                value={formData.familySupport.email}
-                                onChange={(e) => handleChange('familySupport', 'email', e.target.value)}
-                                placeholder="john@example.com"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="phone">Phone Number</Label>
-                              <Input
-                                id="phone"
-                                type="tel"
-                                value={formData.familySupport.phone}
-                                onChange={(e) => handleChange('familySupport', 'phone', e.target.value)}
-                                placeholder="+44 1234 567890"
-                              />
-                            </div>
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="message">Message *</Label>
-                            <Textarea
-                              id="message"
-                              required
-                              value={formData.familySupport.message}
-                              onChange={(e) => handleChange('familySupport', 'message', e.target.value)}
-                              placeholder="Tell us about your family's needs..."
-                              rows={6}
-                            />
-                          </div>
-                          <Button type="submit" size="lg" className="w-full group">
-                            Send Message
-                            <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </form>
-                      )}
+                      <Phone className="w-8 h-8 text-green-600" />
                     </div>
-                  )}
+                    <h3 className="mb-2">Chat on WhatsApp</h3>
+                    <p className="text-muted-foreground mb-6">
+                     Prefer WhatsApp? Tap the icon above to chat with Ena directly — she’ll be happy to help.
+                    </p>
+                    <Button
+                      size="lg"
+                      className="w-full bg-green-500 hover:bg-green-600 text-white"
+                      onClick={() => window.open(whatsappUrl, '_blank')}
+                    >
+                      Chat on WhatsApp
+                    </Button>
+                    <p className="text-xs text-muted-foreground mt-3">
+                      Or email us at
+                      <a className="ml-1 underline" href="mailto:Merceron@marleyswhisper.com"> Merceron@marleyswhisper.com</a>
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -435,35 +195,15 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   </div>
                   <h3 className="mb-3">Schedule a Consultation</h3>
                   <p className="text-muted-foreground mb-6">
-                    Book a free 30-minute consultation to discuss your child's needs and explore how we can help.
+                    Book a free 10-minute consultation to discuss our child's needs and explore how we can help.
                   </p>
-                  <Button className="w-full" onClick={() => alert('Calendar booking integration would go here')}>
+                  <Button className="w-full" onClick={() => window.open(googleCalendarUrl, '_blank')}>
                     Book Appointment
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* FAQs */}
-              <Card>
-                <CardContent className="p-8">
-                  <h3 className="mb-6">Frequently Asked Questions</h3>
-                  <div className="space-y-6">
-                    {faqs.map((faq, index) => (
-                      <div key={index} className="pb-6 border-b border-border last:border-0 last:pb-0">
-                        <h4 className="mb-2">{faq.question}</h4>
-                        <p className="text-sm text-muted-foreground">{faq.answer}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <Button
-                    variant="outline"
-                    className="w-full mt-6"
-                    onClick={() => onNavigate('resources')}
-                  >
-                    View All FAQs
-                  </Button>
-                </CardContent>
-              </Card>
+              {/* FAQs section removed */}
 
               {/* Quick Links */}
               <Card>

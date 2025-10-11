@@ -97,10 +97,20 @@ export function Footer({ onNavigate }: FooterProps) {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-90">
             <p>&copy; 2025 Marley's Whisper. All rights reserved.</p>
             <div className="flex gap-6">
-              <button className="hover:underline">Privacy Policy</button>
-              <button className="hover:underline">Terms of Service</button>
-              <button className="hover:underline">Cookie Policy</button>
+              <button className="hover:underline" onClick={() => onNavigate('privacy')}>Privacy Policy</button>
+              <button className="hover:underline" onClick={() => onNavigate('terms')}>Terms of Service</button>
             </div>
+            <p className="text-sm opacity-90 text-white">
+            Website is Developed by  
+            <a 
+              href="https://timeglobaltech.com/portfolio/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:underline ml-2"
+            >
+               Time Global
+            </a>
+          </p>
           </div>
         </div>
       </div>

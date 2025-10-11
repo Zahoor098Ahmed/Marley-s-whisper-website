@@ -1,5 +1,6 @@
 
 import { motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
 import { Home, BookOpen, Users, Heart, ArrowRight, Sparkles, Star, MessageSquare } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -7,6 +8,39 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
+}
+
+// Simple count-up component that animates when it enters the viewport
+function CountUp({ end, duration = 1.6 }: { end: number; duration?: number }) {
+  const [val, setVal] = useState(0);
+  const [animated, setAnimated] = useState(false);
+  const ref = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !animated) {
+          setAnimated(true);
+          const start = performance.now();
+          const step = (now: number) => {
+            const progress = Math.min((now - start) / (duration * 1000), 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            setVal(Math.round(end * eased));
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration, animated]);
+
+  return <span ref={ref}>{val.toLocaleString()}</span>;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
@@ -41,10 +75,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
   ];
 
   const stats = [
-    { value: '100+', label: 'Children Supported' },
-    { value: '95%', label: 'Success Rate' },
-    { value: '10+', label: 'Years Experience' },
-    { value: '50+', label: 'Partner Schools' },
+    { value: 100, suffix: '+', label: 'Children Supported' },
+    { value: 95, suffix: '%', label: 'Success Rate' },
+    { value: 10, suffix: '+', label: 'Years Experience' },
+    { value: 50, suffix: '+', label: 'Partner Schools' },
   ];
 
   return (
@@ -60,7 +94,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-sm">Life Instead of "Love"</span>
+                <span className="text-sm">"Life" Instead Of "Love"</span>
               </div>
               
               <h1 className="mb-6">
@@ -139,7 +173,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl lg:text-4xl text-primary mb-2">{stat.value}</div>
+                <motion.div
+                  className="mb-2 leading-none inline-flex items-baseline gap-1 rounded-xl px-3 py-2 backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/8 transition-all hover:scale-[1.02]"
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                >
+                  <span className="text-3xl lg:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-sm gradient-animated">
+                    <CountUp end={stat.value} />
+                  </span>
+                  <span className="align-baseline text-xl lg:text-2xl font-semibold text-secondary">
+                    {stat.suffix}
+                  </span>
+                </motion.div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
@@ -240,7 +287,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           >
             <h2 className="mb-6">Ready to Help Your Child Thrive?</h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Get in touch today to discuss how we can support your child's educational journey with 
+              Get in touch today to discuss how we can support our child's educational journey with 
               compassion and expertise.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

@@ -1,84 +1,18 @@
 import { motion } from 'motion/react';
-import { BookOpen, FileText, Video, Download, Calendar, TrendingUp, Heart, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { BookOpen, TrendingUp, Heart, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import { resources, getSlug } from './resourcesData';
+import { blogPosts, getPostSlug } from './blogData';
 
-export function ResourcesPage() {
-  const blogPosts = [
-    {
-      title: '5 Signs Your Child Might Benefit from Home-Based Learning',
-      excerpt: 'Understanding when traditional schooling isn\'t working and recognizing the signs that your child needs additional support.',
-      category: 'Guidance',
-      date: 'March 15, 2025',
-      readTime: '5 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6827-high.jpg',
-    },
-    {
-      title: 'Making Learning Fun: Creative Activities for Reluctant Learners',
-      excerpt: 'Practical ideas for engaging children who struggle with traditional learning methods through hands-on, creative approaches.',
-      category: 'Activities',
-      date: 'March 10, 2025',
-      readTime: '7 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0356-high.jpg',
-    },
-    {
-      title: 'Understanding School Exclusion: A Parent\'s Guide',
-      excerpt: 'What exclusion means, your rights as a parent, and how to support your child through this challenging experience.',
-      category: 'Guidance',
-      date: 'March 5, 2025',
-      readTime: '10 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0689-high-w6ypkh.jpg',
-    },
+export function ResourcesPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
+  // Blog/resource modals removed; using dedicated pages
+  // resource modal removed; using dedicated details page navigation
 
-    {
-      title: 'Building Emotional Resilience in Children with Behavioral Challenges',
-      excerpt: 'Strategies for helping children develop coping mechanisms and emotional regulation skills.',
-      category: 'Tips',
-      date: 'February 20, 2025',
-      readTime: '6 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_6166-high.jpg',
-    },
-    {
-      title: 'The Benefits of Outdoor Learning for Child Development',
-      excerpt: 'How nature-based education can improve focus, reduce anxiety, and foster a love of learning.',
-      category: 'Research',
-      date: 'February 15, 2025',
-      readTime: '9 min read',
-      image: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_5004-high.jpg',
-    },
-  ];
 
-  const resources = [
-    {
-      icon: FileText,
-      title: 'Parent Support Guide',
-      description: 'Comprehensive guide for parents navigating educational challenges',
-      type: 'PDF',
-      color: 'bg-primary/10 text-primary',
-    },
-    {
-      icon: Video,
-      title: 'Introduction to Our Approach',
-      description: 'Video overview of our educational philosophy and methods',
-      type: 'Video',
-      color: 'bg-accent/20 text-accent-foreground',
-    },
-    {
-      icon: Download,
-      title: 'Activity Ideas Pack',
-      description: '50+ creative learning activities you can do at home',
-      type: 'PDF',
-      color: 'bg-secondary/30 text-secondary-foreground',
-    },
-    {
-      icon: Calendar,
-      title: 'Learning Schedule Template',
-      description: 'Customizable template for organizing home learning',
-      type: 'PDF',
-      color: 'bg-primary/10 text-primary',
-    },
-  ];
+
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
@@ -108,7 +42,7 @@ export function ResourcesPage() {
             </div>
             <h1 className="mb-6">Resources & Blog</h1>
             <p className="text-lg text-muted-foreground">
-              Expert guidance, practical tips, and inspiring stories to support your child's educational journey.
+              Expert guidance, practical tips, and inspiring stories to support our child's educational journey.
             </p>
           </motion.div>
         </div>
@@ -124,9 +58,9 @@ export function ResourcesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="mb-4">Free Downloadable Resources</h2>
+            <h2 className="mb-4">Featured Resources</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Helpful guides and tools to support your child's learning at home.
+              Helpful guides and tools to support our child's learning at home.
             </p>
           </motion.div>
 
@@ -139,18 +73,24 @@ export function ResourcesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow group cursor-pointer">
+                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden group cursor-pointer">
                   <CardContent className="p-6">
-                    <div className={`w-14 h-14 rounded-2xl ${resource.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      <resource.icon className="w-7 h-7" />
+                    <div className="flex items-center gap-3 mb-3">
+                      <Badge variant="secondary">{resource.type}</Badge>
                     </div>
-                    <Badge variant="secondary" className="mb-3">{resource.type}</Badge>
-                    <h3 className="mb-2 text-base">{resource.title}</h3>
+                    <h3 className="mb-3 group-hover:text-primary transition-colors">{resource.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4">{resource.description}</p>
-                    <Button variant="ghost" className="group/btn p-0 h-auto hover:bg-transparent">
-                      Download
-                      <Download className="w-4 h-4 ml-2 group-hover/btn:translate-y-1 transition-transform" />
-                    </Button>
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <span className="text-xs text-muted-foreground">{resource.type}</span>
+                      <Button
+                        variant="ghost"
+                        className="group/btn p-0 h-auto hover:bg-transparent"
+                        onClick={() => onNavigate?.(`resource?slug=${getSlug(resource.title)}`)}
+                      >
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -185,30 +125,25 @@ export function ResourcesPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden group cursor-pointer">
-                  <CardContent className="p-0">
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Badge className={getCategoryColor(post.category)}>
+                        {post.category}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">{post.readTime}</span>
                     </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Badge className={getCategoryColor(post.category)}>
-                          {post.category}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{post.readTime}</span>
-                      </div>
-                      <h3 className="mb-3 group-hover:text-primary transition-colors">{post.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
-                      <div className="flex items-center justify-between pt-4 border-t border-border">
-                        <span className="text-xs text-muted-foreground">{post.date}</span>
-                        <Button variant="ghost" className="group/btn p-0 h-auto hover:bg-transparent">
-                          Read More
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </div>
+                    <h3 className="mb-3 group-hover:text-primary transition-colors">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <span className="text-xs text-muted-foreground">{post.date}</span>
+                      <Button
+                        variant="ghost"
+                        className="group/btn p-0 h-auto hover:bg-transparent"
+                        onClick={() => onNavigate?.(`blog?slug=${getPostSlug(post.title)}`)}
+                      >
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -282,6 +217,18 @@ export function ResourcesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Blog details now open on a dedicated page */}
+
+      {/* Video Player Modal removed */}
+
+      {/* Resource details open on a dedicated page now */}
     </div>
   );
 }
+
+// BlogDetailsModal removed
+
+
+// Modal for resource details (styled like blog)
+// ResourceDetailsModal removed in favor of dedicated page navigation
