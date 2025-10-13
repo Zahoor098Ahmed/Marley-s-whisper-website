@@ -162,8 +162,8 @@ export function ContactPage({ onNavigate }) {
             >
               {/* Booking Calendar CTA */}
               <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
-                <CardContent className="p-8">
-                  <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6">
+                <CardContent className="p-8 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 mx-auto">
                     <CalendarIcon className="w-7 h-7" />
                   </div>
                   <h3 className="mb-3">Book a consultation to explore how we can help</h3>
