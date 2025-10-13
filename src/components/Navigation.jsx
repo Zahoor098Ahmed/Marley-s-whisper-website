@@ -11,7 +11,7 @@ export function Navigation({ currentPage, onNavigate }) {
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Services' },
     { id: 'gallery', label: 'Gallery & Testimonials' },
-    { id: 'resources', label: 'Blogs' },
+    // { id: 'resources', label: 'Blogs' },
     { id: 'contact', label: 'Contact' },
   ];
 

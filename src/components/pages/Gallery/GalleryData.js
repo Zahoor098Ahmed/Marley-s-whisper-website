@@ -103,4 +103,12 @@ export const testimonials = [
     location: 'UK',
     rating: 5,
   },
+  {
+    quote:
+      "I met Marley and Valérie when I was in year 6 and nobody wanted me in their school because I was so naughty, but now, I behave and I love going to school every day. I am in year 10 and I want to learn.",
+    author: 'J (14 X 10 years old)',
+    role: 'Student',
+    location: 'UK',
+    rating: 5,
+  },
 ];

@@ -75,7 +75,7 @@ export function ServicesPage({ onNavigate }) {
                           <div>
                             <h3 className="mb-4 flex items-center gap-2">
                               <span>What we do</span>
-                              <Badge variant="secondary" className="ml-2">Features</Badge>
+                              {/* <Badge variant="secondary" className="ml-2">Features</Badge> */}
                             </h3>
                             <ul className="space-y-3">
                               {service.features.map((feature) => (
@@ -91,7 +91,7 @@ export function ServicesPage({ onNavigate }) {
                           <div>
                             <h3 className="mb-4 flex items-center gap-2">
                               <span>Key Benefits</span>
-                              <Badge variant="secondary" className="ml-2">Outcomes</Badge>
+                              {/* <Badge variant="secondary" className="ml-2">Outcomes</Badge> */}
                             </h3>
                             <ul className="space-y-3">
                               {service.benefits.map((benefit) => (
@@ -170,7 +170,7 @@ export function ServicesPage({ onNavigate }) {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="mb-4">How It Works</h2>
+            <h2 className="mb-4">How it works</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Getting started with Marley's Whisper is simple and straightforward.
             </p>
@@ -181,7 +181,7 @@ export function ServicesPage({ onNavigate }) {
               {
                 step: '1',
                 title: 'Initial Consultation',
-                description: 'Free, no-obligation discussion about your child\'s needs',
+                description: 'Free, no-obligation discussion about your needs',
               },
               {
                 step: '2',
@@ -191,7 +191,7 @@ export function ServicesPage({ onNavigate }) {
               {
                 step: '3',
                 title: 'Tailored Plan',
-                description: 'Personalised programme designed specifically for your child',
+                description: 'Personalised programme designed',
               },
               {
                 step: '4',

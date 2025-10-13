@@ -6,7 +6,7 @@ import { Button } from '../../ui/button';
 import { ImageWithFallback } from '../../figma/ImageWithFallback';
 import { galleryImages, testimonials } from './GalleryData';
 
-export function GalleryPage() {
+export function GalleryPage({ onNavigate }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Thumbnail pagination state
@@ -225,7 +225,7 @@ export function GalleryPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="mb-4">What Families Say</h2>
+            <h2 className="mb-4">What They Say</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Hear from parents, children, and educators about their experiences with Marley's Whisper.
             </p>
@@ -270,6 +270,8 @@ export function GalleryPage() {
                     </div>
                   </CardContent>
                 </Card>
+                
+                
               </motion.div>
             ))}
           </div>
@@ -290,7 +292,10 @@ export function GalleryPage() {
               We'd love to hear from you. Your feedback helps us improve and inspires other families 
               who might be considering our services.
             </p>
-            <Button size="lg" variant="secondary">
+            <Button 
+            size="lg" 
+            variant="secondary"
+            onClick={() => onNavigate('contact')}>
               Get in Touch
             </Button>
           </motion.div>

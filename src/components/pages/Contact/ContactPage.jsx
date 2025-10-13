@@ -122,7 +122,7 @@ export function ContactPage({ onNavigate }) {
             >
               <Card>
                 <CardContent className="p-8">
-                  <h2 className="mb-6">Send Us a Message</h2>
+                  {/* <h2 className="mb-6">Send Us a Message</h2> */}
                   <div className="text-center py-10">
                     <div
                       className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 cursor-pointer"
@@ -134,19 +134,19 @@ export function ContactPage({ onNavigate }) {
                     </div>
                     <h3 className="mb-2">Chat on WhatsApp</h3>
                     <p className="text-muted-foreground mb-6">
-                     Prefer WhatsApp? Tap the icon above to chat with Ena directly — she’ll be happy to help.
+                     Prefer WhatsApp? Tap the icon above to chat with Valérie directly — she’ll be happy to help.
                     </p>
                     <Button
                       size="lg"
-                      className="w-full bg-green-500 hover:bg-green-600 text-white"
+                      className="w-full "
                       onClick={() => window.open(whatsappUrl, '_blank')}
                     >
                       Chat on WhatsApp
                     </Button>
-                    <p className="text-xs text-muted-foreground mt-3">
+                    {/* <p className="text-xs text-muted-foreground mt-3">
                       Or email us at
                       <a className="ml-1 underline" href="mailto:Merceron@marleyswhisper.com"> Merceron@marleyswhisper.com</a>
-                    </p>
+                    </p> */}
                   </div>
                 </CardContent>
               </Card>
@@ -166,7 +166,7 @@ export function ContactPage({ onNavigate }) {
                   <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6">
                     <CalendarIcon className="w-7 h-7" />
                   </div>
-                  <h3 className="mb-3">Schedule a Consultation</h3>
+                  <h3 className="mb-3">Book a consultation to explore how we can help</h3>
                   <p className="text-muted-foreground mb-6">
                     Book a free 10-minute consultation to discuss our child's needs and explore how we can help.
                   </p>
@@ -179,7 +179,7 @@ export function ContactPage({ onNavigate }) {
               {/* FAQs section removed */}
 
               {/* Quick Links */}
-              <Card>
+              {/* <Card>
                 <CardContent className="p-8">
                   <h3 className="mb-6">Quick Links</h3>
                   <div className="space-y-3">
@@ -195,7 +195,7 @@ export function ContactPage({ onNavigate }) {
                     ))}
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
             </motion.div>
           </div>
         </div>

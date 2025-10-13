@@ -57,7 +57,7 @@ export function HomePage({ onNavigate }) {
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <Sparkles className="w-4 h-4" />
                 {/* <span className="text-sm">"Life" Instead Of "Love"</span> */}
-                <span>I learn to read with Marley and it gave me confidence. I wasn't going to school before, but now I go every day and I love it.</span>
+                <span>Where care and education come together for lifelong love of learning.</span>
               </div>
               
               <h1 className="mb-6">
@@ -250,8 +250,7 @@ export function HomePage({ onNavigate }) {
           >
             <h2 className="mb-6">Ready to Help our Child Thrive?</h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Get in touch today to discuss how we can support our child's growth journey with 
-              compassion and expertise.
+              Get in touch today to discuss how we can support.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
@@ -260,7 +259,7 @@ export function HomePage({ onNavigate }) {
                 onClick={() => onNavigate('contact')}
                 className="group"
               >
-                Schedule a Consultation
+                Book a consultation to explore how we can help
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button

@@ -8,8 +8,8 @@ export const services = [
     description: React.createElement(
       React.Fragment,
       null,
-      'Professional coaching and mentoring within school settings ',
-      React.createElement('span', { style: { color: '#0000FF' } }, 'to fully engage every child and'),
+      'Professional coaching and mentoring within school settings to fully engage every child and ',
+      // React.createElement('span', { style: { color: '#0000FF' } }, 'to fully engage every child and'),
       ' prevent exclusion.'
     ),
     color: 'bg-accent/20 text-accent-foreground',

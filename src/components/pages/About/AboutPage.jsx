@@ -3,6 +3,7 @@ import { Heart, Target, Compass, Lightbulb } from 'lucide-react';
 import { Card, CardContent } from '../../ui/card';
 import { ImageWithFallback } from '../../figma/ImageWithFallback';
 import { values, team } from './AboutData.js';
+import ownerImage from '../../../assets/owner.jpeg';
 
 export function AboutPage() {
   return (
@@ -40,12 +41,12 @@ export function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-             <div className="rounded-2xl overflow-hidden shadow-xl bg-blue-100 flex items-center justify-center">
+             <div className="rounded-2xl overflow-hidden shadow-xl h-[500px] flex items-center justify-center">
                <ImageWithFallback
-                 src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0279-high.jpg?enable-io=true&enable=upscale&crop=926%2C1389%2Cx216%2Cy0%2Csafe&width=310&height=465"
-                 alt="Peaceful nature scene representing calm learning environment"
-                //  className="w-full h-[500px] bject-contain scale-100"
-                 className="w-full h-[500px] object-contain"
+                 src={ownerImage}
+                 alt="Valerie Merceron"
+                 className="h-full w-full object-cover rounded-2xl"
+                  //  className="w-full h-[500px] object-contain scale-100"
                />
             </div>
             </motion.div>
@@ -59,13 +60,13 @@ export function AboutPage() {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
                 <Lightbulb className="w-4 h-4" />
-                <span className="text-sm">The Valerie's Story</span>
+                <span className="text-sm">Valérie's Story</span>
               </div>
               
               <h2>Where it all started</h2>
               
               <p className="text-muted-foreground">
-                Marley’s Whisper was founded by Valerie Merceron, an experienced educator who witnessed far too many 
+                Marley’s Whisper was founded by Valérie Merceron (NPQH, QTS, BA Hons), an experienced educator who witnessed far too many 
                 children being failed by traditional educational systems. After years of working in mainstream schools, 
                 she realised that children facing behavioural challenges or at risk of exclusion needed a different 
                 approach — one rooted in compassion, understanding, and personalised support.
@@ -79,10 +80,10 @@ export function AboutPage() {
                 where they are.
               </p>
               
-              <p className="text-muted-foreground">
+              {/* <p className="text-muted-foreground">
                 Today, we’ve grown into a team of dedicated professionals, all united by the belief that every 
                 child deserves the chance to discover their potential in a supportive and nurturing environment.
-              </p>
+              </p> */}
             </motion.div>
           </div>
         </div>
