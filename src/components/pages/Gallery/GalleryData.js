@@ -122,8 +122,8 @@ export const testimonials = [
   {
     quote:
       "We couldn’t have done it without Marley and Valérie. I got my relationship back with my son and he is back in a routine, ready for school in the morning. He loves going.",
-    author: 'J (14 year old)',
-    role: 'Michelle (parent)',
+    author: 'Michelle ',
+    role: 'parent',
     location: 'UK',
     rating: 5,
   },
