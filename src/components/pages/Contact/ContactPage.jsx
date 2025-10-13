@@ -168,7 +168,7 @@ export function ContactPage({ onNavigate }) {
                   </div>
                   <h3 className="mb-3">Book a consultation to explore how we can help</h3>
                   <p className="text-muted-foreground mb-6">
-                    Book a free 10-minute consultation to discuss our child's needs and explore how we can help.
+                    Book a free consultation to discuss our child's needs and explore how we can help.
                   </p>
                   <Button className="w-full" onClick={() => window.open(googleCalendarUrl, '_blank')}>
                     Book Appointment
