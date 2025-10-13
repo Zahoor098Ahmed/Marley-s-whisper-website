@@ -1,21 +1,21 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { BookOpen, TrendingUp, Heart, ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '../ui/card';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
+import { Card, CardContent } from '../../ui/card';
+import { Button } from '../../ui/button';
+import { Badge } from '../../ui/badge';
 import { resources, getSlug } from './resourcesData';
 import { blogPosts, getPostSlug } from './blogData';
 
-export function ResourcesPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
+export function ResourcesPage({ onNavigate }) {
   // Blog/resource modals removed; using dedicated pages
   // resource modal removed; using dedicated details page navigation
 
 
 
 
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
+  const getCategoryColor = (category) => {
+    const colors = {
       'Guidance': 'bg-primary/10 text-primary',
       'Activities': 'bg-secondary/30 text-secondary-foreground',
       'Tips': 'bg-accent/20 text-accent-foreground',

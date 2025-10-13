@@ -1,20 +1,17 @@
 
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { Home, BookOpen, Users, Heart, ArrowRight, Sparkles, Star, MessageSquare } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card, CardContent } from '../ui/card';
-import { ImageWithFallback } from '../figma/ImageWithFallback';
-
-interface HomePageProps {
-  onNavigate: (page: string) => void;
-}
+import { ArrowRight, Sparkles, Star } from 'lucide-react';
+import { Button } from '../../ui/button';
+import { Card, CardContent } from '../../ui/card';
+import { ImageWithFallback } from '../../figma/ImageWithFallback';
+import { services, stats } from './HomeData';
 
 // Simple count-up component that animates when it enters the viewport
-function CountUp({ end, duration = 1.6 }: { end: number; duration?: number }) {
+function CountUp({ end, duration = 1.6 }) {
   const [val, setVal] = useState(0);
   const [animated, setAnimated] = useState(false);
-  const ref = useRef<HTMLSpanElement | null>(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -25,7 +22,7 @@ function CountUp({ end, duration = 1.6 }: { end: number; duration?: number }) {
         if (entry.isIntersecting && !animated) {
           setAnimated(true);
           const start = performance.now();
-          const step = (now: number) => {
+          const step = (now) => {
             const progress = Math.min((now - start) / (duration * 1000), 1);
             const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
             setVal(Math.round(end * eased));
@@ -43,43 +40,8 @@ function CountUp({ end, duration = 1.6 }: { end: number; duration?: number }) {
   return <span ref={ref}>{val.toLocaleString()}</span>;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
-  const services = [
-    {
-      icon: BookOpen,
-      title: 'In-School Support and Coaching',
-       description: (
-        <>
-           Professional coaching and mentoring within school settings{' '}
-           <span style={{ color: '#0000FF' }}>to fully engage every child and</span>{' '}
-           prevent exclusion.
-       </>
-      ),
-      color: 'bg-accent/20 text-accent-foreground',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_7892-high-gzzzmc.jpg',
-    },
-    {
-      icon: Home,
-      title: 'Home-Based Learning',
-      description: 'Personalised educational programmes delivered in the comfort and safety of your home.',
-      color: 'bg-primary/10 text-primary',
-      imageSrc: 'https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/img_0689-high-w6ypkh.jpg',
-    },
-    {
-      icon: Users,
-      title: 'Family Support Programmes',
-      description: 'Holistic approach involving the whole family in the educational journey.',
-      color: 'bg-secondary/30 text-secondary-foreground',
-      imageSrc: 'https://prevention.psu.edu/wp-content/uploads/2022/05/family-hands_AdobeStock_224157897_Artem-Web.jpeg',
-    },
-  ];
-
-  const stats = [
-    { value: 100, suffix: '+', label: 'Children Supported' },
-    
-    { value: 10, suffix: '+', label: 'Years Experience' },
-   
-  ];
+export function HomePage({ onNavigate }) {
+  
 
   return (
     <div>

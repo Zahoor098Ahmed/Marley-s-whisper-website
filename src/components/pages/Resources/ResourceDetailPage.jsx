@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
+import { Badge } from '../../ui/badge';
+import { Button } from '../../ui/button';
 import { resources } from './resourcesData';
 
-export function ResourceDetailPage({ params, onNavigate }: { params: Record<string, string>; onNavigate?: (page: string) => void }) {
+export function ResourceDetailPage({ params, onNavigate }) {
   const slug = params?.slug || '';
   const resource = resources.find(r => r.slug === slug);
 

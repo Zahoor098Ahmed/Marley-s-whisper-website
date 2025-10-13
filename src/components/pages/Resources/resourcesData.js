@@ -1,18 +1,8 @@
 import { FileText, Calendar } from 'lucide-react';
 
-export type ResourceItem = {
-  icon: any;
-  title: string;
-  slug: string;
-  description: string;
-  type: string;
-  color: string;
-  content?: string;
-};
+const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
 
-const slugify = (title: string) => title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-
-export const resources: ResourceItem[] = [
+export const resources = [
   {
     icon: FileText,
     title: 'Parent Support Guide',
@@ -51,4 +41,4 @@ export const resources: ResourceItem[] = [
   },
 ];
 
-export const getSlug = (title: string) => slugify(title);
+export const getSlug = (title) => slugify(title);

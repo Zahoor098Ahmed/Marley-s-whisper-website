@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
+import { Badge } from '../../ui/badge';
+import { Button } from '../../ui/button';
 import { blogPosts } from './blogData';
 
-export function BlogDetailPage({ params, onNavigate }: { params: Record<string, string>; onNavigate?: (page: string) => void }) {
+export function BlogDetailPage({ params, onNavigate }) {
   const slug = params?.slug || '';
   const post = blogPosts.find(p => p.slug === slug);
 

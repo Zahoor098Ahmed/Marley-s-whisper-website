@@ -1,21 +1,18 @@
 
 
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Calendar as CalendarIcon } from 'lucide-react';
-import { Card, CardContent } from '../ui/card';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
-import { Label } from '../ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { contactInfo, whatsappUrl, googleCalendarUrl, quickLinks } from './ContactData.js';
+import { Card, CardContent } from '../../ui/card';
+import { Button } from '../../ui/button';
+import { Input } from '../../ui/input';
+import { Textarea } from '../../ui/textarea';
+import { Label } from '../../ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 
-interface ContactPageProps {
-  onNavigate: (page: string) => void;
-}
-
-export function ContactPage({ onNavigate }: ContactPageProps) {
+export function ContactPage({ onNavigate }) {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [activeForm, setActiveForm] = useState('school');
   const [formData, setFormData] = useState({
@@ -24,7 +21,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     familySupport: { referringAgency: '', contactName: '', email: '', phone: '', message: '' },
   });
 
-  const handleSubmit = (formType: string) => (e: FormEvent) => {
+  const handleSubmit = (formType) => (e) => {
     e.preventDefault();
     // In a real implementation, this would send to backend/Supabase
     console.log(`${formType} form submitted:`, formData[formType]);
@@ -37,38 +34,14 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const handleChange = (formType: string, field: string, value: string) => {
+  const handleChange = (formType, field, value) => {
     setFormData((prev) => ({
       ...prev,
       [formType]: { ...prev[formType], [field]: value },
     }));
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-      content: 'Merceron@marleyswhisper.com',
-      link: 'mailto:Merceron@marleyswhisper.com',
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      content: 'Hampshire, IOW, Surrey, Berkshire',
-      link: null,
-    },
-  ];
-
-  // WhatsApp chat link
-  const adminWhatsAppNumber = '447000000000';
-  const defaultWhatsAppMessage = encodeURIComponent("Hello, this is Marley’s Whisper, I’d like to learn more.");
-  const whatsappUrl = `https://wa.me/${adminWhatsAppNumber}?text=${defaultWhatsAppMessage}`;
-
-  // Google Calendar booking link (prefilled event template)
-  const gcTitle = encodeURIComponent("Consultation with Marley's Whisper");
-  const gcDetails = encodeURIComponent("Book a free 10-minute consultation to discuss your child's needs and explore how we can help.");
-  const gcLocation = encodeURIComponent("Online (WhatsApp or Zoom)");
-  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcTitle}&details=${gcDetails}&location=${gcLocation}`;
+  // Data moved to ContactData.js
 
   // FAQs removed as per request
 
@@ -210,20 +183,16 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <CardContent className="p-8">
                   <h3 className="mb-6">Quick Links</h3>
                   <div className="space-y-3">
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start"
-                      onClick={() => onNavigate('services')}
-                    >
-                      View Our Services
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start"
-                      onClick={() => onNavigate('gallery')}
-                    >
-                      Read Testimonials
-                    </Button>
+                    {quickLinks.map((link) => (
+                      <Button
+                        key={link.page}
+                        variant="ghost"
+                        className="w-full justify-start"
+                        onClick={() => onNavigate(link.page)}
+                      >
+                        {link.label}
+                      </Button>
+                    ))}
                   </div>
                 </CardContent>
               </Card>

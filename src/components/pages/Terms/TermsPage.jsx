@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
-import { Shield, Info, FileText } from 'lucide-react';
-import { Card, CardContent } from '../ui/card';
+import { FileText, Scale, Info } from 'lucide-react';
+import { Card, CardContent } from '../../ui/card';
 
-export function PrivacyPage() {
+export function TermsPage() {
   return (
     <div>
       {/* Hero */}
@@ -15,12 +15,12 @@ export function PrivacyPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
-              <Shield className="w-4 h-4" />
-              <span className="text-sm">Privacy Policy</span>
+              <FileText className="w-4 h-4" />
+              <span className="text-sm">Terms of Service</span>
             </div>
-            <h1 className="mb-4">Your Privacy Matters</h1>
+            <h1 className="mb-4">Clear, Fair Terms</h1>
             <p className="text-muted-foreground">
-              We respect your privacy and follow UK GDPR. Here’s how we collect, use, and protect your information when you engage with Marley’s Whisper.
+              These terms govern your use of Marley’s Whisper and the educational support services we provide. By engaging with us, you agree to the following.
             </p>
           </motion.div>
         </div>
@@ -35,52 +35,48 @@ export function PrivacyPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-6">
                     <div>
-                      <h2 className="mb-2">Information we collect</h2>
+                      <h2 className="mb-2">Services and availability</h2>
                       <p className="text-muted-foreground">
-                        We may collect your name, contact details, and relevant information about a child’s learning needs to deliver our services. We only collect what is
-                        necessary for providing personalised programmes and communicating with you.
+                        We deliver personalised programmes tailored to the child’s needs. Availability may vary and sessions may be rescheduled due to health, safeguarding, or school requirements.
                       </p>
                     </div>
                     <div>
-                      <h2 className="mb-2">How we use your information</h2>
+                      <h2 className="mb-2">Bookings, fees, and cancellations</h2>
                       <p className="text-muted-foreground">
-                        We use your information to provide and manage our educational support, communicate with families and schools, maintain records, and improve our service. We do not sell your data.
+                        Bookings are confirmed in writing. Fees are payable as agreed. Please provide reasonable notice for cancellations; late cancellations may incur a fee.
                       </p>
                     </div>
                     <div>
-                      <h2 className="mb-2">Lawful basis</h2>
+                      <h2 className="mb-2">Safeguarding and conduct</h2>
                       <p className="text-muted-foreground">
-                        Our processing is based on legitimate interests and, where appropriate, your consent. For safeguarding or legal obligations, we may process data to comply with regulatory requirements.
+                        We work in partnership with families and schools to safeguard children. We expect respectful conduct from all parties to ensure a safe, supportive environment.
                       </p>
                     </div>
                   </div>
                   <div className="space-y-6">
                     <div>
-                      <h2 className="mb-2">Data retention</h2>
+                      <h2 className="mb-2">Liability</h2>
                       <p className="text-muted-foreground">
-                        We retain information only for as long as necessary to deliver our services and meet legal obligations. When data is no longer required, it is securely deleted.
+                        We provide professional support with reasonable care and skill. To the extent permitted by law, we are not liable for indirect losses or events beyond our reasonable control.
                       </p>
                     </div>
                     <div>
-                      <h2 className="mb-2">Your rights</h2>
+                      <h2 className="mb-2">Intellectual property</h2>
                       <p className="text-muted-foreground">
-                        You have rights to access, rectify, erase, and restrict processing of your data. To exercise these rights, please contact us using the details on the Contact page.
+                        Materials, plans, and resources remain our intellectual property unless otherwise agreed. You may use them for the child’s programme but not distribute them commercially.
                       </p>
                     </div>
                     <div>
-                      <h2 className="mb-2">Contact</h2>
+                      <h2 className="mb-2">Governing law</h2>
                       <p className="text-muted-foreground">
-                        For privacy enquiries, please email
-                        {' '}
-                        <a className="underline" href="mailto:Merceron@marleyswhisper.com">Merceron@marleyswhisper.com</a>.
-                        {' '}We aim to respond promptly and resolve matters in a fair and transparent manner.
+                        These terms are governed by the laws of England and Wales. Disputes will be handled fairly and, where possible, resolved amicably.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Info className="w-4 h-4" />
+                  <Scale className="w-4 h-4" />
                   <span>Last updated: Jan 2025</span>
                 </div>
               </CardContent>

@@ -2,32 +2,33 @@ import { useState, useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 // import { NewsletterSignup } from './components/NewsletterSignup';
-import { HomePage } from './components/pages/HomePage';
-import { AboutPage } from './components/pages/AboutPage';
-import { ServicesPage } from './components/pages/ServicesPage';
-import { GalleryPage } from './components/pages/GalleryPage';
-import { ResourcesPage } from './components/pages/ResourcesPage';
-import { ResourceDetailPage } from './components/pages/ResourceDetailPage';
-import { BlogDetailPage } from './components/pages/BlogDetailPage';
-import { ContactPage } from './components/pages/ContactPage';
-import { PrivacyPage } from './components/pages/PrivacyPage';
-import { TermsPage } from './components/pages/TermsPage';
+import { HomePage } from './components/pages/Home/HomePage';
+import { AboutPage } from './components/pages/About/AboutPage';
+import { ServicesPage } from './components/pages/Services/ServicesPage';
+import { GalleryPage } from './components/pages/Gallery/GalleryPage';
+import { ResourcesPage } from './components/pages/Resources/ResourcesPage';
+import { ResourceDetailPage } from './components/pages/Resources/ResourceDetailPage';
+import { BlogDetailPage } from './components/pages/Resources/BlogDetailPage';
+import { ContactPage } from './components/pages/Contact/ContactPage';
+import { PrivacyPage } from './components/pages/Privacy/PrivacyPage';
+import { TermsPage } from './components/pages/Terms/TermsPage';
 import { Toaster } from './components/ui/sonner';
 
-type PageId = 'home' | 'about' | 'services' | 'gallery' | 'resources' | 'resource' | 'blog' | 'contact' | 'privacy' | 'terms' | 'cookies';
+// Page identifiers
+const PAGE_IDS = ['home','about','services','gallery','resources','resource','blog','contact','privacy','terms','cookies'];
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
-  const [params, setParams] = useState<Record<string, string>>({});
+  const [currentPage, setCurrentPage] = useState('home');
+  const [params, setParams] = useState({});
 
-  const parseHash = (hashValue?: string) => {
+  const parseHash = (hashValue) => {
     const raw = (hashValue ?? window.location.hash).replace(/^#/, '');
     const [base, query] = raw.split('?');
-    const searchParams: Record<string, string> = {};
+    const searchParams = {};
     if (query) {
       new URLSearchParams(query).forEach((v, k) => { searchParams[k] = v; });
     }
-    return { base: (base || 'home') as PageId, params: searchParams };
+    return { base: base || 'home', params: searchParams };
   };
 
   // Handle browser back/forward
@@ -46,7 +47,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page) => {
     const { base, params } = parseHash(`#${page}`);
     setCurrentPage(base);
     setParams(params);

@@ -3,12 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import logo from 'figma:asset/70a08256e8e435ba6ffb63b26cfa01eb5f0ed982.png';
 
-interface NavigationProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export function Navigation({ currentPage, onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -20,7 +15,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { id: 'contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (pageId: string) => {
+  const handleNavClick = (pageId) => {
     onNavigate(pageId);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });

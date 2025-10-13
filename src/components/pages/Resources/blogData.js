@@ -1,17 +1,6 @@
-export type BlogPost = {
-  title: string;
-  slug: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  image?: string;
-  content: string;
-};
+const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
 
-const slugify = (title: string) => title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-
-export const blogPosts: BlogPost[] = [
+export const blogPosts = [
   {
     title: '5 Signs Your Child Might Benefit from Home-Based Learning',
     slug: slugify('5 Signs Your Child Might Benefit from Home-Based Learning'),
@@ -82,4 +71,4 @@ Regular time outside lowers stress and improves readiness to learn.`,
   },
 ];
 
-export const getPostSlug = (title: string) => slugify(title);
+export const getPostSlug = (title) => slugify(title);

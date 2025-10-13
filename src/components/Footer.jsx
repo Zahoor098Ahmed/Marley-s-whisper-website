@@ -2,11 +2,7 @@ import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react
 import { Button } from './ui/button';
 import logo from 'figma:asset/70a08256e8e435ba6ffb63b26cfa01eb5f0ed982.png';
 
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
-
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer({ onNavigate }) {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
