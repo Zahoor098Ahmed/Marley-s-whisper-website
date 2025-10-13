@@ -105,8 +105,32 @@ export const testimonials = [
   },
   {
     quote:
+      "I learnt to read with Marley and it gave me confidence. I wasn't going to school before, but now I go every day and I love it.",
+    author: 'T (10 years old)',
+    role: 'Student',
+    location: 'UK',
+    rating: 5,
+  },
+  {
+    quote:
       "I met Marley and Valérie when I was in year 6 and nobody wanted me in their school because I was so naughty, but now, I behave and I love going to school every day. I am in year 10 and I want to learn.",
-    author: 'J (14 X 10 years old)',
+    author: 'J (14 years old)',
+    role: 'Student',
+    location: 'UK',
+    rating: 5,
+  },
+  {
+    quote:
+      "We couldn’t have done it without Marley and Valérie. I got my relationship back with my son and he is back in a routine, ready for school in the morning. He loves going.",
+    author: 'J (14 year old)',
+    role: 'Michelle (parent)',
+    location: 'UK',
+    rating: 5,
+  },
+  {
+    quote:
+      "Marley keeps me calm and I am more confident. I can read now. I read road signs on the way to school.",
+    author: 'C (10 years old)',
     role: 'Student',
     location: 'UK',
     rating: 5,
