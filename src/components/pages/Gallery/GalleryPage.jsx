@@ -5,8 +5,15 @@ import { Card, CardContent } from '../../ui/card';
 import { Button } from '../../ui/button';
 import { ImageWithFallback } from '../../figma/ImageWithFallback';
 import { galleryImages, testimonials } from './GalleryData';
+import { getGalleryImages } from '../../../lib/adminStore';
 
 export function GalleryPage({ onNavigate }) {
+  // Use admin-published images when available; otherwise fallback to static samples
+  const adminList = getGalleryImages();
+  const publishedImages = adminList
+    .filter((i) => i.published)
+    .map((i) => ({ url: i.imageUrl, caption: i.title, description: i.description }));
+  const imagesToShow = adminList.length ? publishedImages : galleryImages;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Thumbnail pagination state
@@ -25,7 +32,7 @@ export function GalleryPage({ onNavigate }) {
 
   // Clamp start index when thumbsPerPage or total changes
   useEffect(() => {
-    setThumbStartIndex((s) => Math.min(s, Math.max(0, galleryImages.length - thumbsPerPage)));
+    setThumbStartIndex((s) => Math.min(s, Math.max(0, imagesToShow.length - thumbsPerPage)));
   }, [thumbsPerPage]);
 
   // Keep active image within the visible thumbnail window
@@ -40,20 +47,22 @@ export function GalleryPage({ onNavigate }) {
   
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+    if (imagesToShow.length === 0) return;
+    setCurrentImageIndex((prev) => (prev + 1) % imagesToShow.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+    if (imagesToShow.length === 0) return;
+    setCurrentImageIndex((prev) => (prev - 1 + imagesToShow.length) % imagesToShow.length);
   };
 
   // Thumbnails pagination helpers
-  const visibleThumbnails = galleryImages.slice(
+  const visibleThumbnails = imagesToShow.slice(
     thumbStartIndex,
     thumbStartIndex + thumbsPerPage
   );
   const canPrevThumbs = thumbStartIndex > 0;
-  const canNextThumbs = thumbStartIndex + thumbsPerPage < galleryImages.length;
+  const canNextThumbs = thumbStartIndex + thumbsPerPage < imagesToShow.length;
 
   const prevThumbnails = () => {
     if (canPrevThumbs) {
@@ -114,54 +123,65 @@ export function GalleryPage({ onNavigate }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="overflow-hidden shadow-2xl">
-              <CardContent className="p-0">
-                {/* Main Image */}
-                <div className="relative">
-                  <div className="aspect-video relative overflow-hidden bg-muted">
-                    <ImageWithFallback
-                      src={galleryImages[currentImageIndex].url}
-                      alt={galleryImages[currentImageIndex].caption}
-                      className="w-full h-full object-contain"
-                    />
+            {imagesToShow.length > 0 ? (
+              <Card className="overflow-hidden shadow-2xl">
+                <CardContent className="p-0">
+                  {/* Main Image */}
+                  <div className="relative">
+                    <div className="aspect-video relative overflow-hidden bg-muted">
+                      <ImageWithFallback
+                        src={imagesToShow[currentImageIndex].url}
+                        alt={imagesToShow[currentImageIndex].caption}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+
+                    {/* Navigation Buttons */}
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
+                      onClick={prevImage}
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
+                      onClick={nextImage}
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </Button>
+
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm">
+                      {currentImageIndex + 1} / {imagesToShow.length}
+                    </div>
                   </div>
 
-                  {/* Navigation Buttons */}
-                  <Button
-                    variant="secondary"
-                    size="icon"
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
-                    onClick={prevImage}
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    size="icon"
-                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
-                    onClick={nextImage}
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </Button>
-
-                  {/* Image Counter */}
-                  <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm">
-                    {currentImageIndex + 1} / {galleryImages.length}
+                  {/* Image Caption */}
+                  <div className="p-6 sm:p-6 bg-white">
+                    <h3 className="mb-2">{imagesToShow[currentImageIndex].caption}</h3>
+                    <p className="text-muted-foreground">{imagesToShow[currentImageIndex].description}</p>
                   </div>
-                </div>
-
-                {/* Image Caption */}
-                <div className="p-6 sm:p-6 bg-white">
-                  <h3 className="mb-2">{galleryImages[currentImageIndex].caption}</h3>
-                  <p className="text-muted-foreground">{galleryImages[currentImageIndex].description}</p>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="overflow-hidden shadow-2xl">
+                <CardContent className="p-8">
+                  <div className="text-center text-muted-foreground">
+                    No published images yet.
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Thumbnail Strip with pagination, vertical column, and overlay arrows */}
             <div className="mt-4 sm:mt-6">
+              {imagesToShow.length > 0 && (
               <div className="relative">
 
                 {/* Horizontal row of visible thumbnails (flex left-to-right, centered) */}
@@ -210,6 +230,7 @@ export function GalleryPage({ onNavigate }) {
                   <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </div>
+              )}
             </div>
           </motion.div>
         </div>

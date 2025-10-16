@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../ui/card';
-import { FileText, MessageSquare, Image, Mail, Users, TrendingUp } from 'lucide-react';
+import { MessageSquare, Image, List, Info } from 'lucide-react';
 import { 
-  getBlogPosts, 
   getTestimonials, 
-  getGalleryImages, 
-  getContactSubmissions,
-  getNewsletterSubscribers 
+  getGalleryImages,
+  getServices,
+  getAboutValues,
 } from '../../../../lib/adminStore';
 
 export function DashboardStats() {
   const [stats, setStats] = useState({
-    totalPosts: 0,
-    publishedPosts: 0,
     totalTestimonials: 0,
     publishedTestimonials: 0,
     totalImages: 0,
     publishedImages: 0,
-    unreadContacts: 0,
-    newsletterSubscribers: 0,
+    totalServices: 0,
+    publishedServices: 0,
+    totalAboutValues: 0,
+    publishedAboutValues: 0,
   });
 
   useEffect(() => {
@@ -26,32 +25,24 @@ export function DashboardStats() {
   }, []);
 
   const loadStats = () => {
-    const posts = getBlogPosts();
     const testimonials = getTestimonials();
     const images = getGalleryImages();
-    const contacts = getContactSubmissions();
-    const subscribers = getNewsletterSubscribers();
+    const services = getServices();
+    const aboutValues = getAboutValues();
 
     setStats({
-      totalPosts: posts.length,
-      publishedPosts: posts.filter(p => p.published).length,
       totalTestimonials: testimonials.length,
       publishedTestimonials: testimonials.filter(t => t.published).length,
       totalImages: images.length,
       publishedImages: images.filter(i => i.published).length,
-      unreadContacts: contacts.filter(c => !c.read).length,
-      newsletterSubscribers: subscribers.length,
+      totalServices: services.length,
+      publishedServices: services.filter(s => s.published).length,
+      totalAboutValues: aboutValues.length,
+      publishedAboutValues: aboutValues.filter(a => a.published).length,
     });
   };
 
   const statCards = [
-    {
-      title: 'Blog Posts',
-      value: stats.totalPosts,
-      subtitle: `${stats.publishedPosts} published`,
-      icon: FileText,
-      color: 'bg-primary/10 text-primary',
-    },
     {
       title: 'Testimonials',
       value: stats.totalTestimonials,
@@ -67,23 +58,23 @@ export function DashboardStats() {
       color: 'bg-secondary/30 text-secondary-foreground',
     },
     {
-      title: 'Contact Messages',
-      value: stats.unreadContacts,
-      subtitle: 'unread messages',
-      icon: Mail,
-      color: 'bg-[#F2C94C]/20 text-[#2C4F4A]',
+      title: 'Services',
+      value: stats.totalServices,
+      subtitle: `${stats.publishedServices} published`,
+      icon: List,
+      color: 'bg-primary/10 text-primary',
     },
     {
-      title: 'Newsletter Subscribers',
-      value: stats.newsletterSubscribers,
-      subtitle: 'total subscribers',
-      icon: Users,
-      color: 'bg-[#5EC4CD]/20 text-[#2C4F4A]',
+      title: 'About',
+      value: stats.totalAboutValues,
+      subtitle: `${stats.publishedAboutValues} published`,
+      icon: Info,
+      color: 'bg-muted/30 text-muted-foreground',
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mb-8">
       {statCards.map((stat, index) => (
         <Card key={stat.title}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

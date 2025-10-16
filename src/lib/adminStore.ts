@@ -38,6 +38,9 @@ export interface Testimonial {
   name: string;
   quote: string;
   published: boolean;
+  role?: string;
+  location?: string;
+  rating?: number;
 }
 
 export interface NewsletterSubscriber {
@@ -46,12 +49,55 @@ export interface NewsletterSubscriber {
   date: string;
 }
 
+// Services
+export interface ServiceItem {
+  id: string;
+  title: string;
+  subtitle?: string;
+  imageUrl?: string;
+  color?: string;
+  icon?: string; // lucide icon name
+  features?: string[];
+  benefits?: string[];
+  published: boolean;
+}
+
+export interface OfferingItem {
+  id: string;
+  title: string;
+  description: string;
+  icon?: string; // lucide icon name
+  published: boolean;
+}
+
+// About
+export interface AboutValue {
+  id: string;
+  title: string;
+  description: string;
+  icon?: string; // lucide icon name
+  published: boolean;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  imageUrl?: string;
+  published: boolean;
+}
+
 const KEYS = {
   BLOG_POSTS: 'mw_blog_posts',
   GALLERY_IMAGES: 'mw_gallery_images',
   CONTACT_SUBMISSIONS: 'mw_contact_submissions',
   TESTIMONIALS: 'mw_testimonials',
   NEWSLETTER: 'mw_newsletter_subscribers',
+  SERVICES: 'mw_services',
+  OFFERINGS: 'mw_additional_offerings',
+  ABOUT_VALUES: 'mw_about_values',
+  TEAM_MEMBERS: 'mw_team_members',
 };
 
 function read<T>(key: string, fallback: T): T {
@@ -149,4 +195,72 @@ export function addNewsletterSubscriber(email: string): void {
   const list = getNewsletterSubscribers();
   list.push({ id: Date.now().toString(), email, date: new Date().toISOString() });
   write(KEYS.NEWSLETTER, list);
+}
+
+// Services
+export function getServices(): ServiceItem[] {
+  return read<ServiceItem[]>(KEYS.SERVICES, []);
+}
+
+export function saveService(item: ServiceItem): void {
+  const list = getServices();
+  const idx = list.findIndex(s => s.id === item.id);
+  if (idx >= 0) list[idx] = item; else list.push(item);
+  write(KEYS.SERVICES, list);
+}
+
+export function deleteService(id: string): void {
+  const list = getServices().filter(s => s.id !== id);
+  write(KEYS.SERVICES, list);
+}
+
+// Additional Offerings
+export function getOfferings(): OfferingItem[] {
+  return read<OfferingItem[]>(KEYS.OFFERINGS, []);
+}
+
+export function saveOffering(off: OfferingItem): void {
+  const list = getOfferings();
+  const idx = list.findIndex(o => o.id === off.id);
+  if (idx >= 0) list[idx] = off; else list.push(off);
+  write(KEYS.OFFERINGS, list);
+}
+
+export function deleteOffering(id: string): void {
+  const list = getOfferings().filter(o => o.id !== id);
+  write(KEYS.OFFERINGS, list);
+}
+
+// About Values
+export function getAboutValues(): AboutValue[] {
+  return read<AboutValue[]>(KEYS.ABOUT_VALUES, []);
+}
+
+export function saveAboutValue(val: AboutValue): void {
+  const list = getAboutValues();
+  const idx = list.findIndex(v => v.id === val.id);
+  if (idx >= 0) list[idx] = val; else list.push(val);
+  write(KEYS.ABOUT_VALUES, list);
+}
+
+export function deleteAboutValue(id: string): void {
+  const list = getAboutValues().filter(v => v.id !== id);
+  write(KEYS.ABOUT_VALUES, list);
+}
+
+// Team Members
+export function getTeamMembers(): TeamMember[] {
+  return read<TeamMember[]>(KEYS.TEAM_MEMBERS, []);
+}
+
+export function saveTeamMember(member: TeamMember): void {
+  const list = getTeamMembers();
+  const idx = list.findIndex(m => m.id === member.id);
+  if (idx >= 0) list[idx] = member; else list.push(member);
+  write(KEYS.TEAM_MEMBERS, list);
+}
+
+export function deleteTeamMember(id: string): void {
+  const list = getTeamMembers().filter(m => m.id !== id);
+  write(KEYS.TEAM_MEMBERS, list);
 }

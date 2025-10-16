@@ -4,18 +4,24 @@ import { Input } from '../../../ui/input';
 import { Label } from '../../../ui/label';
 import { Textarea } from '../../../ui/textarea';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../../../ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../ui/select';
 import { Badge } from '../../../ui/badge';
-import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '../../../../lib/adminStore';
 import { galleryCategories, galleryText } from './galleryData';
 
 export function GalleryManager() {
   const [images, setImages] = useState([]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingImage, setEditingImage] = useState(null);
+  const [imgFile, setImgFile] = useState(null);
+  const [imgForm, setImgForm] = useState({
+    id: null,
+    title: '',
+    description: '',
+    category: galleryCategories[0],
+    published: true,
+  });
 
   useEffect(() => {
     loadImages();
@@ -25,30 +31,66 @@ export function GalleryManager() {
     setImages(getGalleryImages());
   };
 
-  const handleSubmit = (e) => {
+  const submitImage = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    
+    const id = imgForm.id ?? Date.now().toString();
+
+    const readFileAsDataURL = (f) => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ''));
+      reader.onerror = reject;
+      reader.readAsDataURL(f);
+    });
+
+    let imageSrc = '';
+    if (imgFile && imgFile.size > 0) {
+      try {
+        imageSrc = await readFileAsDataURL(imgFile);
+      } catch {
+        toast.error('Image file read failed');
+        return;
+      }
+    }
+
+    if (!imgForm.title.trim()) { toast.error('Heading required'); return; }
+    if (!imgForm.description.trim()) { toast.error('Subheading required'); return; }
+    if (!imageSrc) {
+      // Edit mode me agar naya file nahi diya, existing image rakhen
+      if (editingImage?.imageUrl) {
+        imageSrc = editingImage.imageUrl;
+      } else {
+        toast.error('Image file required');
+        return;
+      }
+    }
+
     const image = {
-      id: editingImage?.id || Date.now().toString(),
-      title: String(formData.get('title') || ''),
-      description: String(formData.get('description') || ''),
-      imageUrl: String(formData.get('imageUrl') || ''),
-      category: String(formData.get('category') || ''),
+      id,
+      title: imgForm.title.trim(),
+      description: imgForm.description.trim(),
+      imageUrl: imageSrc,
+      category: imgForm.category,
       date: editingImage?.date || new Date().toISOString().split('T')[0],
-      published: editingImage?.published || false,
+      published: imgForm.published,
     };
 
     saveGalleryImage(image);
+    toast.success(imgForm.id ? 'Image updated successfully' : 'Image added successfully');
+    resetImgForm();
     loadImages();
-    setIsDialogOpen(false);
-    setEditingImage(null);
-    toast.success(editingImage ? 'Image updated successfully' : 'Image added successfully');
   };
 
   const handleEdit = (image) => {
     setEditingImage(image);
-    setIsDialogOpen(true);
+    setImgForm({
+      id: image.id,
+      title: image.title || '',
+      description: image.description || '',
+      imageUrl: image.imageUrl || '',
+      category: image.category || galleryCategories[0],
+      published: !!image.published,
+    });
+    setImgFile(null);
   };
 
   const handleDelete = (id) => {
@@ -65,96 +107,87 @@ export function GalleryManager() {
     toast.success(image.published ? 'Image unpublished' : 'Image published');
   };
 
-  const resetDialog = () => {
+  const resetImgForm = () => {
     setEditingImage(null);
-    setIsDialogOpen(false);
+    setImgForm({ id: null, title: '', description: '', imageUrl: '', category: galleryCategories[0], published: true });
+    setImgFile(null);
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-foreground">{galleryText.heading}</h2>
-          <p className="text-muted-foreground">{galleryText.subheading}</p>
-        </div>
-        <Dialog open={isDialogOpen} onOpenChange={(open) => {
-          setIsDialogOpen(open);
-          if (!open) resetDialog();
-        }}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="w-4 h-4 mr-2" />
-              {galleryText.newButton}
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>{editingImage ? galleryText.editTitle : galleryText.createTitle}</DialogTitle>
-              <DialogDescription>
-                {editingImage ? galleryText.editDescription : galleryText.createDescription}
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-4 py-4">
-                <div className="space-y-2">
-                  <Label htmlFor="title">Title</Label>
-                  <Input
-                    id="title"
-                    name="title"
-                    defaultValue={editingImage?.title}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea
-                    id="description"
-                    name="description"
-                    rows={2}
-                    defaultValue={editingImage?.description}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="imageUrl">Image URL</Label>
-                  <Input
-                    id="imageUrl"
-                    name="imageUrl"
-                    type="url"
-                    placeholder="https://..."
-                    defaultValue={editingImage?.imageUrl}
-                    required
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    Use Unsplash or other image service URLs
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="category">Category</Label>
-                  <Select name="category" defaultValue={editingImage?.category || galleryCategories[0]}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {galleryCategories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <DialogFooter>
-                <Button type="button" variant="outline" onClick={resetDialog}>
-                  Cancel
-                </Button>
-                <Button type="submit">
-                  {editingImage ? 'Update' : 'Add'} Image
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-foreground">{galleryText.heading}</h2>
+        <p className="text-muted-foreground">{galleryText.subheading}</p>
       </div>
+
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+              <ImageIcon className="w-5 h-5" />
+            </div>
+            <div>
+              <CardTitle>{imgForm.id ? galleryText.editTitle : galleryText.createTitle}</CardTitle>
+              <CardDescription>{imgForm.id ? galleryText.editDescription : galleryText.createDescription}</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={submitImage} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label>Heading</Label>
+              <Input value={imgForm.title} onChange={(e) => setImgForm({ ...imgForm, title: e.target.value })} required />
+            </div>
+            <div className="space-y-2">
+              <Label>Subheading</Label>
+              <Textarea rows={2} value={imgForm.description} onChange={(e) => setImgForm({ ...imgForm, description: e.target.value })} />
+            </div>
+            <div className="space-y-2">
+              <Label>Image File</Label>
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const f = e.target.files?.[0] || null;
+                  setImgFile(f);
+                }}
+              />
+              <p className="text-xs text-muted-foreground">File upload required</p>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="text-sm text-muted-foreground">
+                {imgFile
+                  ? `Selected file: ${imgFile.name}`
+                  : editingImage?.imageUrl
+                    ? 'Existing image will be kept unless you select a new file.'
+                    : 'No image selected'}
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label>Category</Label>
+              <Select value={imgForm.category} onValueChange={(v) => setImgForm({ ...imgForm, category: v })}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {galleryCategories.map((cat) => (
+                    <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center gap-3 lg:col-span-2">
+              <Button type="submit" className="gap-2">
+                <Plus className="w-4 h-4" />
+                {imgForm.id ? 'Save Changes' : 'Add Image'}
+              </Button>
+              {imgForm.id && (
+                <Button type="button" variant="ghost" onClick={resetImgForm}>Cancel</Button>
+              )}
+            </div>
+          </form>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {images.length === 0 ? (
