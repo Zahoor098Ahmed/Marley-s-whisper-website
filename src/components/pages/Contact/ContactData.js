@@ -16,7 +16,7 @@ export const contactInfo = [
 ];
 
 export const adminWhatsAppNumber = '447495525609';
-export const defaultWhatsAppMessage = "";
+export const defaultWhatsAppMessage = "This is Malery";
 export const whatsappUrl = `https://wa.me/${adminWhatsAppNumber}?text=${encodeURIComponent(defaultWhatsAppMessage)}`;
 
 const gcTitle = "Consultation with Marley's Whisper";
