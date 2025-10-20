@@ -1,6 +1,7 @@
 
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import "./styles/globals.css";
 // Lazy-load admin screens to avoid unnecessary module fetches on non-admin routes
 
 const rootEl = document.getElementById("root");

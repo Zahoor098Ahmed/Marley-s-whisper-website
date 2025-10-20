@@ -57,26 +57,26 @@ export function DashboardStats() {
       icon: Image,
       color: 'bg-secondary/30 text-secondary-foreground',
     },
-    {
-      title: 'Services',
-      value: stats.totalServices,
-      subtitle: `${stats.publishedServices} published`,
-      icon: List,
-      color: 'bg-primary/10 text-primary',
-    },
-    {
-      title: 'About',
-      value: stats.totalAboutValues,
-      subtitle: `${stats.publishedAboutValues} published`,
-      icon: Info,
-      color: 'bg-muted/30 text-muted-foreground',
-    },
+    // {
+    //   title: 'Services',
+    //   value: stats.totalServices,
+    //   subtitle: `${stats.publishedServices} published`,
+    //   icon: List,
+    //   color: 'bg-primary/10 text-primary',
+    // },
+    // {
+    //   title: 'About',
+    //   value: stats.totalAboutValues,
+    //   subtitle: `${stats.publishedAboutValues} published`,
+    //   icon: Info,
+    //   color: 'bg-muted/30 text-muted-foreground',
+    // },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-6xl mx-auto">
       {statCards.map((stat, index) => (
-        <Card key={stat.title}>
+        <Card key={stat.title} className="w-full">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm">{stat.title}</CardTitle>
             <div className={`w-8 h-8 rounded-lg ${stat.color} flex items-center justify-center`}>

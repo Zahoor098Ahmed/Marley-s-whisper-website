@@ -9,6 +9,7 @@ import { Badge } from '../../../ui/badge';
 import { Plus, Edit, Trash2, Eye, EyeOff, Info } from 'lucide-react';
 import { toast } from 'sonner';
 import { getAboutValues, saveAboutValue, deleteAboutValue, getTeamMembers, saveTeamMember, deleteTeamMember } from '../../../../lib/adminStore';
+import { aboutText } from './AboutData';
 
 const valueIcons = ['Heart', 'Target', 'Award', 'Users'];
 
@@ -71,8 +72,8 @@ export function AboutManager() {
               <Info className="w-5 h-5" />
             </div>
             <div>
-              <CardTitle>{valForm.id ? 'Edit Value' : 'Add Value'}</CardTitle>
-              <CardDescription>Core values shown on the About page.</CardDescription>
+              <CardTitle>{valForm.id ? aboutText.editValueTitle : aboutText.createValueTitle}</CardTitle>
+              <CardDescription>{aboutText.valuesDescription}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -110,7 +111,7 @@ export function AboutManager() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {values.map((v) => (
           <Card key={v.id} className="h-full">
             <CardHeader className="space-y-2">
@@ -141,8 +142,8 @@ export function AboutManager() {
       {/* Team */}
       <Card>
         <CardHeader>
-          <CardTitle>Team Members</CardTitle>
-          <CardDescription>Manage people displayed on the About page.</CardDescription>
+          <CardTitle>{aboutText.teamTitle}</CardTitle>
+          <CardDescription>{aboutText.teamDescription}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={submitMember} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -175,7 +176,7 @@ export function AboutManager() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {team.map((m) => (
           <Card key={m.id} className="h-full">
             <CardHeader className="space-y-2">

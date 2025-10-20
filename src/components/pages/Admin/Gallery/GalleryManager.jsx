@@ -4,12 +4,12 @@ import { Input } from '../../../ui/input';
 import { Label } from '../../../ui/label';
 import { Textarea } from '../../../ui/textarea';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../ui/select';
+
 import { Badge } from '../../../ui/badge';
 import { Plus, Edit, Trash2, Eye, EyeOff, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '../../../../lib/adminStore';
-import { galleryCategories, galleryText } from './galleryData';
+import { galleryText } from './galleryData';
 
 export function GalleryManager() {
   const [images, setImages] = useState([]);
@@ -19,7 +19,6 @@ export function GalleryManager() {
     id: null,
     title: '',
     description: '',
-    category: galleryCategories[0],
     published: true,
   });
 
@@ -69,7 +68,6 @@ export function GalleryManager() {
       title: imgForm.title.trim(),
       description: imgForm.description.trim(),
       imageUrl: imageSrc,
-      category: imgForm.category,
       date: editingImage?.date || new Date().toISOString().split('T')[0],
       published: imgForm.published,
     };
@@ -87,7 +85,6 @@ export function GalleryManager() {
       title: image.title || '',
       description: image.description || '',
       imageUrl: image.imageUrl || '',
-      category: image.category || galleryCategories[0],
       published: !!image.published,
     });
     setImgFile(null);
@@ -109,16 +106,16 @@ export function GalleryManager() {
 
   const resetImgForm = () => {
     setEditingImage(null);
-    setImgForm({ id: null, title: '', description: '', imageUrl: '', category: galleryCategories[0], published: true });
+    setImgForm({ id: null, title: '', description: '', imageUrl: '', published: true });
     setImgFile(null);
   };
 
   return (
     <div className="space-y-8">
-      <div>
+      {/* <div>
         <h2 className="text-foreground">{galleryText.heading}</h2>
         <p className="text-muted-foreground">{galleryText.subheading}</p>
-      </div>
+      </div> */}
 
       <Card>
         <CardHeader>
@@ -163,19 +160,7 @@ export function GalleryManager() {
                     : 'No image selected'}
               </div>
             </div>
-            <div className="space-y-2">
-              <Label>Category</Label>
-              <Select value={imgForm.category} onValueChange={(v) => setImgForm({ ...imgForm, category: v })}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {galleryCategories.map((cat) => (
-                    <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+
             <div className="flex items-center gap-3 lg:col-span-2">
               <Button type="submit" className="gap-2">
                 <Plus className="w-4 h-4" />
@@ -189,9 +174,9 @@ export function GalleryManager() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {images.length === 0 ? (
-          <Card className="md:col-span-2 lg:col-span-3">
+          <Card className="md:col-span-2 lg:col-span-4">
             <CardContent className="flex items-center justify-center py-12">
               <p className="text-muted-foreground">No gallery images yet. Add your first image!</p>
             </CardContent>
@@ -218,12 +203,12 @@ export function GalleryManager() {
               </CardHeader>
               <CardContent>
                 <div className="flex gap-2 text-sm text-muted-foreground">
-                  <span>{image.category}</span>
-                  <span>•</span>
+                  {image.category && <span>{image.category}</span>}
+                  {image.category && <span>•</span>}
                   <span>{new Date(image.date).toLocaleDateString()}</span>
                 </div>
               </CardContent>
-              <CardFooter className="flex flex-col gap-2">
+              <CardFooter className="flex flex-col gap-3">
                 <Button
                   variant="outline"
                   size="sm"
@@ -242,12 +227,12 @@ export function GalleryManager() {
                     </>
                   )}
                 </Button>
-                <div className="flex gap-2 w-full">
-                  <Button variant="outline" size="sm" className="flex-1" onClick={() => handleEdit(image)}>
+                <div className="flex gap-4 w-full">
+                  <Button variant="outline" size="sm" className="flex-1 min-w-[140px] justify-center" onClick={() => handleEdit(image)}>
                     <Edit className="w-4 h-4 mr-2" />
                     Edit
                   </Button>
-                  <Button variant="destructive" size="sm" className="flex-1" onClick={() => handleDelete(image.id)}>
+                  <Button variant="destructive" size="sm" className="flex-1 min-w-[140px] justify-center" onClick={() => handleDelete(image.id)}>
                     <Trash2 className="w-4 h-4 mr-2" />
                     Delete
                   </Button>

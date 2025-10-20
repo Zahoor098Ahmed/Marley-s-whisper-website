@@ -9,6 +9,7 @@ import { Badge } from '../../../ui/badge';
 import { Plus, Edit, Trash2, Eye, EyeOff, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import { getTestimonials, saveTestimonial, deleteTestimonial } from '../../../../lib/adminStore';
+import { testimonialText } from './TestimonialData';
 
 export function TestimonialManager() {
   const [testimonials, setTestimonials] = useState([]);
@@ -89,8 +90,8 @@ export function TestimonialManager() {
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <CardTitle>{editingId ? 'Edit Testimonial' : 'Add Testimonial'}</CardTitle>
-              <CardDescription>Testimonials relate to Gallery page; adding is fine even if not visible yet.</CardDescription>
+              <CardTitle>{editingId ? testimonialText.editTitle : testimonialText.createTitle}</CardTitle>
+<CardDescription>{editingId ? testimonialText.editDescription : testimonialText.createDescription}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -126,7 +127,7 @@ export function TestimonialManager() {
             </div>
 
             <div className="lg:col-span-2 space-y-2">
-              <Label>Quote</Label>
+              <Label>Feedback</Label>
               <Textarea rows={4} value={form.quote} onChange={(e) => setForm({ ...form, quote: e.target.value })} placeholder="Write their feedback here..." />
             </div>
 
@@ -143,7 +144,7 @@ export function TestimonialManager() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {testimonials.map((t) => (
           <Card key={t.id} className="h-full">
             <CardHeader className="space-y-2">
@@ -157,26 +158,26 @@ export function TestimonialManager() {
               {(t.rating ?? 0) > 0 && (
                 <div className="mt-3 flex gap-1">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <span key={i} className="text-[#F2C94C]">★</span>
+                    <span key={i} className="text-secondary">★</span>
                   ))}
                 </div>
               )}
             </CardContent>
-            <CardFooter className="flex items-center justify-between">
+            <CardFooter className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2">
                 <Badge variant={t.published ? 'default' : 'secondary'}>
                   {t.published ? 'Published' : 'Hidden'}
                 </Badge>
               </div>
-              <div className="flex items-center gap-2">
-                <Button size="sm" variant="ghost" onClick={() => togglePublish(t)} className="gap-1">
+              <div className="flex items-center justify-center gap-4 flex-wrap sm:justify-end">
+                <Button size="sm" variant="ghost" onClick={() => togglePublish(t)} className="gap-1 min-w-[140px] justify-center">
                   {t.published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   {t.published ? 'Unpublish' : 'Publish'}
                 </Button>
-                <Button size="sm" variant="ghost" onClick={() => handleEdit(t)} className="gap-1">
+                <Button size="sm" variant="ghost" onClick={() => handleEdit(t)} className="gap-1 min-w-[140px] justify-center">
                   <Edit className="w-4 h-4" /> Edit
                 </Button>
-                <Button size="sm" variant="destructive" onClick={() => handleDelete(t.id)} className="gap-1">
+                <Button size="sm" variant="destructive" onClick={() => handleDelete(t.id)} className="gap-1 min-w-[140px] justify-center">
                   <Trash2 className="w-4 h-4" /> Delete
                 </Button>
               </div>

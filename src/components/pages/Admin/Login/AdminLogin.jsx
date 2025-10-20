@@ -5,6 +5,7 @@ import { Label } from '../../../ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../ui/card';
 import { Lock } from 'lucide-react';
 import { toast } from 'sonner';
+import { loginText } from './LoginData';
 
 export function AdminLogin({ onLogin }) {
   const [password, setPassword] = useState('');
@@ -23,15 +24,15 @@ export function AdminLogin({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2C4F4A]/5 via-background to-[#5EC4CD]/5 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-3 text-center">
-          <div className="mx-auto w-12 h-12 bg-[#2C4F4A] rounded-full flex items-center justify-center">
+          <div className="mx-auto w-12 h-12 bg-primary rounded-full flex items-center justify-center">
             <Lock className="w-6 h-6 text-white" />
           </div>
-          <CardTitle>Admin Panel</CardTitle>
+          <CardTitle>{loginText.title}</CardTitle>
           <CardDescription>
-            Enter your password to access the admin dashboard
+            {loginText.description}
           </CardDescription>
         </CardHeader>
         <CardContent>

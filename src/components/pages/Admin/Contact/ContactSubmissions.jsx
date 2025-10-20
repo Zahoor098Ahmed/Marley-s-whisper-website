@@ -50,7 +50,7 @@ export function ContactSubmissions() {
         </div>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {submissions.length === 0 ? (
           <Card>
             <CardContent className="flex items-center justify-center py-12">
@@ -59,7 +59,7 @@ export function ContactSubmissions() {
           </Card>
         ) : (
           submissions.map((submission) => (
-            <Card key={submission.id} className={!submission.read ? 'border-[#2C4F4A]' : ''}>
+            <Card key={submission.id} className={!submission.read ? 'border-primary' : ''}>
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -80,14 +80,14 @@ export function ContactSubmissions() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="flex items-center gap-2 text-sm">
                     <Mail className="w-4 h-4 text-muted-foreground" />
-                    <a href={`mailto:${submission.email}`} className="text-[#2C4F4A] hover:underline">
+                    <a href={`mailto:${submission.email}`} className="text-primary hover:underline">
                       {submission.email}
                     </a>
                   </div>
                   {submission.phone && (
                     <div className="flex items-center gap-2 text-sm">
                       <Phone className="w-4 h-4 text-muted-foreground" />
-                      <a href={`tel:${submission.phone}`} className="text-[#2C4F4A] hover:underline">
+                      <a href={`tel:${submission.phone}`} className="text-primary hover:underline">
                         {submission.phone}
                       </a>
                     </div>

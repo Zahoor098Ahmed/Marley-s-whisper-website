@@ -9,6 +9,7 @@ import { Badge } from '../../../ui/badge';
 import { Plus, Edit, Trash2, Eye, EyeOff, List } from 'lucide-react';
 import { toast } from 'sonner';
 import { getServices, saveService, deleteService, getOfferings, saveOffering, deleteOffering } from '../../../../lib/adminStore';
+import { servicesText } from './ServicesData';
 
 const serviceIcons = ['School', 'Home', 'Users'];
 const offeringIcons = ['Calendar', 'BookOpen', 'Sparkles'];
@@ -143,8 +144,8 @@ export function ServicesManager() {
               <List className="w-5 h-5" />
             </div>
             <div>
-              <CardTitle>{svcForm.id ? 'Edit Service' : 'Add Service'}</CardTitle>
-              <CardDescription>Manage Services with features and benefits lists.</CardDescription>
+              <CardTitle>{svcForm.id ? servicesText.editServiceTitle : servicesText.createServiceTitle}</CardTitle>
+              <CardDescription>{servicesText.servicesDescription}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -198,7 +199,7 @@ export function ServicesManager() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((s) => (
           <Card key={s.id} className="h-full">
             <CardHeader className="space-y-2">
@@ -235,8 +236,8 @@ export function ServicesManager() {
       {/* Offerings */}
       <Card>
         <CardHeader>
-          <CardTitle>Additional Offerings</CardTitle>
-          <CardDescription>Add smaller offerings like Holiday Programmes, Curriculum Support.</CardDescription>
+          <CardTitle>{servicesText.offeringsTitle}</CardTitle>
+          <CardDescription>{servicesText.offeringsDescription}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={submitOffering} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -272,7 +273,7 @@ export function ServicesManager() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {offerings.map((o) => (
           <Card key={o.id} className="h-full">
             <CardHeader className="space-y-2">

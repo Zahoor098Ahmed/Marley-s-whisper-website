@@ -13,9 +13,11 @@ import { ContactPage } from './components/pages/Contact/ContactPage';
 import { PrivacyPage } from './components/pages/Privacy/PrivacyPage';
 import { TermsPage } from './components/pages/Terms/TermsPage';
 import { Toaster } from './components/ui/sonner';
+import { AdminLogin } from './components/pages/Admin/Login/AdminLogin';
+import { AdminDashboard } from './components/pages/Admin/Dashboard/AdminDashboard';
 
 // Page identifiers
-const PAGE_IDS = ['home','about','services','gallery','resources','resource','blog','contact','privacy','terms','cookies'];
+const PAGE_IDS = ['home','about','services','gallery','resources','resource','blog','contact','privacy','terms','cookies','admin-login','admin-dashboard'];
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -76,6 +78,10 @@ export default function App() {
         return <PrivacyPage />;
       case 'terms':
         return <TermsPage />;
+      case 'admin-login':
+        return <AdminLogin onLogin={() => handleNavigate('admin-dashboard')} />;
+      case 'admin-dashboard':
+        return <AdminDashboard onLogout={() => handleNavigate('admin-login')} />;
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }
