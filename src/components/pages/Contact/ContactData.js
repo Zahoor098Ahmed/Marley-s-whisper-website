@@ -4,8 +4,8 @@ export const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'Merceron@marleyswhisper.com',
-    link: 'mailto:Merceron@marleyswhisper.com',
+    content: 'Merceronva@gmail.com',
+    link: 'mailto:Merceronva@gmail.com',
   },
   {
     icon: MapPin,
