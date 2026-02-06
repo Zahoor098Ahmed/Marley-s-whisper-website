@@ -48,7 +48,7 @@ export function Footer({ onNavigate }) {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm opacity-90">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Merceron@marleyswhisper.com</span>
+                <span>Merceronva@gmail.com</span>
               </li>
               <li className="flex items-start gap-2 text-sm opacity-90">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
