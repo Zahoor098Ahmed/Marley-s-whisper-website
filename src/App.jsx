@@ -6,6 +6,7 @@ import { HomePage } from './components/pages/Home/HomePage';
 import { AboutPage } from './components/pages/About/AboutPage';
 import { ServicesPage } from './components/pages/Services/ServicesPage';
 import { GalleryPage } from './components/pages/Gallery/GalleryPage';
+import {PolicyPage} from './components/pages/Policy/PolicyPage';
 // import { ResourcesPage } from './components/pages/Resources/ResourcesPage';
 import { ResourceDetailPage } from './components/pages/Resources/ResourceDetailPage';
 import { BlogDetailPage } from './components/pages/Resources/BlogDetailPage';
@@ -76,6 +77,8 @@ export default function App() {
         return <PrivacyPage />;
       case 'terms':
         return <TermsPage />;
+      case "policy":
+        return <PolicyPage />
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }

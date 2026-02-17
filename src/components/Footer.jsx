@@ -29,7 +29,7 @@ export function Footer({ onNavigate }) {
           <div>
             <h3 className="mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['Home', 'About Us', 'Services', 'Resources'].map((item) => (
+              {['Home', 'About Us', 'Services', 'Resources', 'Policy'].map((item) => (
                 <li key={item}>
                   <button
                     onClick={() => onNavigate(item.toLowerCase().replace(' ', ''))}
