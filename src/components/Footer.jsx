@@ -93,8 +93,8 @@ export function Footer({ onNavigate }) {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-90">
             <p>&copy; 2025 Marley's Whisper. All rights reserved.</p>
             <div className="flex gap-6">
-              <button className="hover:underline" onClick={() => onNavigate('privacy')}>Privacy Policy</button>
-              <button className="hover:underline" onClick={() => onNavigate('terms')}>Terms of Service</button>
+              {/* <button className="hover:underline" onClick={() => onNavigate('policy')}>Privacy Policy</button>
+              <button className="hover:underline" onClick={() => onNavigate('terms')}>Terms of Service</button> */}
             </div>
             <p className="text-xs opacity-90 text-white text-center">
             Website is Developed by  
