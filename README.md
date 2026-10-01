@@ -1,7 +1,7 @@
 
   # Redesign Marley's Whisper Website
 
-  This is a code bundle for Redesign Marley's Whisper Website. The original project is available at https://www.figma.com/design/Crx0JongPtGqzz7qEUDLYC/Redesign-Marley-s-Whisper-Website.
+  The original project is available at https://www.marleyswhisper.co.uk/#.
 
   ## Running the code
 
