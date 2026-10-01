@@ -99,7 +99,7 @@ export function Footer({ onNavigate }) {
             <p className="text-xs opacity-90 text-white text-center">
             Website is Developed by  
             <a 
-              https://timeglobaltech.com/" 
+              href="https://timeglobaltech.com/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="underline hover:opacity-100 ml-2"
