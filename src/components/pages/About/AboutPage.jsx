@@ -1,0 +1,284 @@
+import { motion } from 'motion/react';
+import { Heart, Target, Compass, Lightbulb } from 'lucide-react';
+import { Card, CardContent } from '../../ui/card';
+import { ImageWithFallback } from '../../figma/ImageWithFallback';
+import { values, team } from './AboutData.js';
+import ownerImage from '../../../assets/owner.jpeg';
+
+export function AboutPage() {
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/10 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
+              <Compass className="w-4 h-4" />
+              <span className="text-sm">Our Story</span>
+            </div>
+            {/* <h1 className="mb-6">About Marley's Whisper</h1> */}
+            <p className="text-lg text-muted-foreground">
+              Founded on the belief that every child deserves the opportunity to thrive, Marley's Whisper 
+              provides compassionate, personalised educational support for children facing behavioural challenges 
+              or exclusion risks.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Origin Story */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+             <div className="rounded-2xl overflow-hidden shadow-xl h-[500px] flex items-center justify-center">
+               <ImageWithFallback
+                 src={ownerImage}
+                 alt="Valerie Merceron"
+                 className="h-full w-full object-cover rounded-2xl"
+                  //  className="w-full h-[500px] object-contain scale-100"
+               />
+            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
+                <Lightbulb className="w-4 h-4" />
+                <span className="text-sm">Valérie's Story</span>
+              </div>
+              
+              <h2>Where it all started</h2>
+              
+              <p className="text-muted-foreground">
+                Marley’s Whisper was founded by Valérie Merceron (NPQH, QTS, BA Hons), an experienced educator who witnessed far too many 
+                children being failed by traditional educational systems. After years of working in mainstream schools, 
+                she realised that children facing behavioural challenges or at risk of exclusion needed a different 
+                approach — one rooted in compassion, understanding, and personalised support.
+              </p>
+              
+              <p className="text-muted-foreground">
+                The name “Marley’s Whisper” pays tribute to Valerie Merceron’s beloved therapy dog, Marley, whose gentle 
+                presence helped countless children feel safe, calm, and ready to learn. Marley has been an integral part 
+                of the journey, providing comfort and emotional support to children who struggle in traditional learning 
+                environments. Like Marley’s soft whisper, our approach is gentle yet powerful, meeting children exactly 
+                where they are.
+              </p>
+              
+              {/* <p className="text-muted-foreground">
+                Today, we’ve grown into a team of dedicated professionals, all united by the belief that every 
+                child deserves the chance to discover their potential in a supportive and nurturing environment.
+              </p> */}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marley Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6 order-2 lg:order-1"
+            >
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
+                <Heart className="w-4 h-4" />
+                <span className="text-sm">Meet Marley</span>
+              </div>
+              
+              <h2>Marley</h2>
+              
+              <p className="text-muted-foreground">
+                From the age of 3 months, I have been going to school and making friends with little humans. I was always the winner at every race in the 
+                playground and learnt to play football. People are surprised when they see that I wear a football shirt and I play with my paws!
+              </p>
+              
+              <p className="text-muted-foreground">
+                The little humans taught me lots of tricks as well. I can jump through hoops and over bars. I can sit up and cross my front paws and I am 
+                very good at singing to music. The little humans love it when there are treats involved. I help the little humans use the right tone of voice and give 
+                eye contact when they speak. They say that I give them confidence and it makes me feel really good. Some little humans even read me 
+                stories when they refuse to read aloud to adult humans.
+              </p>
+              
+              <p className="text-muted-foreground">
+                I may be 9 years old now, but I still like long walks and I walk very well on the lead! I sit down on the pavement and make sure that I get the 
+                signal that it is safe to go before crossing the road. I love a good cuddle and a lot of attention.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-blue-50 flex items-center justify-center">
+                <img
+                  src="https://primary.jwwb.nl/public/q/q/a/temp-zzkgwqtlybhvpxejtysn/photo-marley-high-7samws.jpg?enable-io=true&enable=upscale&crop=749%2C871%2Cx0%2Cy155%2Csafe&width=749&height=871"
+                  alt="Marley the therapy dog jumping through a hoop"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                    <Target className="w-7 h-7" />
+                  </div>
+                  <h3 className="mb-4">Our Mission</h3>
+                  <p className="text-muted-foreground">
+                    To provide compassionate, personalised educational support that helps children overcome 
+                    behavioural challenges and exclusion risks, empowering them to rediscover their love for 
+                    learning and reach their full potential.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/20 text-accent-foreground flex items-center justify-center mb-6">
+                    <Compass className="w-7 h-7" />
+                  </div>
+                  <h3 className="mb-4">Our Vision</h3>
+                  <p className="text-muted-foreground">
+                    A world where every child, regardless of their challenges, has access to educational support 
+                    that nurtures their unique strengths, builds their confidence, and sets them on a path to 
+                    lifelong learning and success.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="mb-4">Our Core Values</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              These principles guide everything we do and shape our approach to supporting children and families.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+                      <value.icon className="w-7 h-7" />
+                    </div>
+                    <h4 className="mb-3">{value.title}</h4>
+                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      {/* <section className="py-20 bg-gradient-to-br from-muted/30 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="mb-4">Meet Our Team</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Dedicated professionals committed to helping every child succeed.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-0">
+                    <div className="aspect-square overflow-hidden rounded-t-lg">
+                      <ImageWithFallback
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="mb-1">{member.name}</h3>
+                      <p className="text-sm text-primary mb-3">{member.role}</p>
+                      <p className="text-sm text-muted-foreground">{member.bio}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+    </div>
+  );
+}
